@@ -12,6 +12,17 @@ public class HomeworkManager {
 
     private final AsyncMySQL mySQL;
 
+    public ArrayList<Homework> getAllHomeworks() {
+
+        ArrayList<Homework> homeworkList = new ArrayList<>();
+        ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest;");
+        try {
+            while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return homeworkList;
+    }
+
     public Homework retrieveHomework(int hwid) {
 
         ResultSet resultSet = mySQL.query("SELECT * FROM hwrequest where hwid = " + hwid + ";");
