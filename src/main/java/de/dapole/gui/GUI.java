@@ -8,9 +8,9 @@ import javax.swing.*;
 @Getter
 @Setter
 public class GUI extends JPanel {
-    private GUIManager manager;
+    private GUIManager guiManager;
 
-    public GUI(GUIManager manager){
-        this.manager = manager;
+    public GUI(GUIManager guiManager){
+        this.guiManager = guiManager;
     }
 }

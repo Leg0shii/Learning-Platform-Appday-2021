@@ -1,5 +1,6 @@
 package de.dapole.gui;
 
+import de.dapole.util.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.kordamp.ikonli.carbonicons.CarbonIcons;
@@ -18,7 +19,6 @@ public class LoginSignupGUI extends GUI{
     private JTextField loginSurnameTextField;
     private JTextField loginFirstnameTextField;
     private JPasswordField loginPasswordField;
-    private JFormattedTextField loginEmailFormattedTextField;
     private JButton loginButton;
     private JPanel loginSubPanel;
     private JLabel loginSurnameLabel;
@@ -27,7 +27,6 @@ public class LoginSignupGUI extends GUI{
     private JLabel loginPasswordLabel;
     private JPasswordField signupPasswordOriginField;
     private JPasswordField signupPasswordCheckField;
-    private JFormattedTextField signupEmailFormattedTextField;
     private JTextField signupFirstnameTextField;
     private JTextField signupSurnameTextField;
     private JButton signupButton;
@@ -37,13 +36,18 @@ public class LoginSignupGUI extends GUI{
     private JLabel signupEmailLabel;
     private JLabel signupPasswordOriginLabel;
     private JLabel signupPasswordCheckLabel;
+    private JTextField loginEmailTextField;
+    private JTextField signupEmailTextField;
+    private JLabel signupErrorLabel;
+    private JLabel loginErrorLabel;
 
-    public LoginSignupGUI(GUIManager manager){
-        super(manager);
+    public LoginSignupGUI(GUIManager guiManager){
+        super(guiManager);
         this.setLayout(new GridLayout(1,1));
         this.add(mainPanel);
 
         setupGUI();
+        setupListeners();
     }
 
     private void setupGUI(){
@@ -55,6 +59,8 @@ public class LoginSignupGUI extends GUI{
         signupIcon.setIkon(CarbonIcons.SAVE);
         signupIcon.setIconSize(25);
         tabPanel.addTab("Signup", signupIcon, signupPanel);
+
+        loginButton.setFont(getFont().deriveFont(Font.BOLD));
 
         loginSurnameLabel.setText("Name");
         loginFirstnameLabel.setText("Vorname");
@@ -68,5 +74,43 @@ public class LoginSignupGUI extends GUI{
         signupPasswordOriginLabel.setText("Passwort");
         signupPasswordCheckLabel.setText("<html> Passwort <br> wiederholen </html>");
         signupButton.setText("Login");
+    }
+
+    private void setupListeners(){
+        loginButton.addActionListener(e -> loginFunction());
+        signupButton.addActionListener(e -> signupFunction());
+    }
+
+    private void signupFunction() {
+        String surname = signupSurnameLabel.getText();
+        String firstname = signupFirstnameLabel.getText();
+        String email = signupEmailTextField.getText();
+        String passwordOrigin = new String(signupPasswordOriginField.getPassword());
+        String passwordCheck = new String(signupPasswordCheckField.getPassword());
+
+        signupErrorLabel.setText("");
+
+        if (!passwordOrigin.equals(passwordCheck)){
+            signupErrorLabel.setText("Passwörter stimmen nicht überein!");
+            return;
+        }
+
+        User user = new User();
+        user.setSurname(surname);
+        user.setPrename(firstname);
+        user.setEmail(email);
+        user.setPassword(passwordOrigin);
+
+        getGuiManager().getDbManager().addStudent(user);
+    }
+
+    private void loginFunction() {
+        String surname = loginSurnameLabel.getText();
+        String firstname = loginFirstnameLabel.getText();
+        String email = loginEmailTextField.getText();
+        String password = new String(loginPasswordField.getPassword());
+
+        getGuiManager().switchToPlatformChooserGUI();
+
     }
 }
