@@ -3,7 +3,7 @@ package de.dapole.gui;
 import javax.swing.*;
 import java.awt.*;
 
-public class uebersichtGUI extends GUI{
+public class OverviewGUI extends GUI{
     private JButton profileButton;
     private JButton leaderboardButton;
     private JButton lerngroupButton;
@@ -11,7 +11,7 @@ public class uebersichtGUI extends GUI{
     private JLabel uebersichtLabel;
     private JPanel mainPanel;
 
-    public uebersichtGUI(GUIManager guiManager) {
+    public OverviewGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
         add(mainPanel);

@@ -4,7 +4,6 @@ import de.dapole.database.DBManager;
 import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.swing.*;
@@ -18,7 +17,7 @@ public class GUIManager extends JFrame {
     private PlatformChooserGUI platformChooserGUI;
     private PlatformSpecifierGUI platformSpecifierGUI;
     private Hausaufgaben hausaufgabenGUI;
-    private uebersichtGUI uebersichtGUI;
+    private OverviewGUI uebersichtGUI;
     private UniChooserGUI uniChooserGUI;
     private TimeChooserGUI timeChooserGUI;
     private final DBManager dbManager;
@@ -66,7 +65,7 @@ public class GUIManager extends JFrame {
     }
 
     public void switchToUebersichtGUI(){
-        uebersichtGUI = new uebersichtGUI(this);
+        uebersichtGUI = new OverviewGUI(this);
         this.setContentPane(uebersichtGUI);
         this.revalidate();
     }
