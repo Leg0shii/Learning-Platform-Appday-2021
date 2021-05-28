@@ -107,11 +107,17 @@ public class LoginSignupGUI extends GUI {
         user.setPrename(firstname);
         user.setEmail(email);
         if(trustScore.validate(email)) {
-            user.setTrustworthy(user.getTrustworthy()+1);
+            user.setTrustworthy(user.getTrustworthy() + 1);
+        } else {
             signupErrorLabel.setText("Bitte gib eine korrekte Email an!");
             return;
         }
-        user.setPassword(passwordOrigin);
+        if(passwordOrigin.length() >= 4) {
+            user.setPassword(passwordOrigin);
+        } else {
+            signupErrorLabel.setText("Bitte gib ein Passwort länger als Vier ein!");
+            return;
+        }
 
         // TODO: Check if email already registered
         if (getGuiManager().getUserManager().checkEmailInUse(email)) {

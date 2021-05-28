@@ -2,6 +2,7 @@ package de.dapole.gui.loginsignup;
 
 import de.dapole.gui.GUI;
 import de.dapole.gui.GUIManager;
+import de.dapole.util.TrustScore;
 import de.dapole.util.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 @Getter
 @Setter
@@ -89,6 +91,12 @@ public class PlatformSpecifierGUI extends GUI {
                 }
             }
         }
+
+        TrustScore trustScore = new TrustScore();
+        if(trustScore.checkPhone(whatsapp)) user.setTrustworthy(user.getTrustworthy()+1);
+        if(trustScore.checkPhone(telegram)) user.setTrustworthy(user.getTrustworthy()+1);
+        if(trustScore.checkDiscord(discord)) user.setTrustworthy(user.getTrustworthy()+1);
+
         user.setDiscord(discord);
         user.setWhatsapp(whatsapp);
         user.setTelegram(telegram);
