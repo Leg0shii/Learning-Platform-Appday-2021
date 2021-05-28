@@ -39,7 +39,7 @@ public class HomeworkGUI extends GUI{
     private void getHelpFunction() { getGuiManager().switchToNewHomeWorkGUI(); }
 
     private void homefunction() {
-        getGuiManager().switchToUebersichtGUI();
+        getGuiManager().switchToOverviewGUI();
     }
 
 }
