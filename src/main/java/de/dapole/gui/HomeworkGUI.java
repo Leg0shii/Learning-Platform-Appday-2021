@@ -12,6 +12,7 @@ public class HomeworkGUI extends GUI{
     private JButton sendHelpButton;
     private JButton getHelpButton;
     private JPanel mainPanel;
+    private JPanel subPanel;
 
     public HomeworkGUI(GUIManager guiManager) {
         super(guiManager);
