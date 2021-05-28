@@ -35,7 +35,7 @@ public class ModuleInfo {
         String query = "";
 
         for (int i = 0; i < length; i++) {
-            query = modules.get(i) + ":" + answers.get(0) + ";" + query;
+            query = modules.get(i) + ":" + answers.get(i) + ";" + query;
         }
 
         return query;
