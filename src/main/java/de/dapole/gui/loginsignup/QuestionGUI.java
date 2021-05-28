@@ -1,5 +1,6 @@
 package de.dapole.gui.loginsignup;
 
+import de.dapole.Application;
 import de.dapole.gui.GUI;
 import de.dapole.gui.GUIManager;
 import de.dapole.util.ModuleInfo;
@@ -63,6 +64,10 @@ public class QuestionGUI extends GUI {
         } else {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
             getGuiManager().getDbManager().addStudent(user);
+
+            User u = Application.getApplication().user;
+            u.setUserid(getGuiManager().getUserManager().getIDFromEmail(u.getEmail()));
+
             getGuiManager().switchToUebersichtGUI();
         }
     }
@@ -76,6 +81,10 @@ public class QuestionGUI extends GUI {
         } else {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
             getGuiManager().getDbManager().addStudent(user);
+
+            User u = Application.getApplication().user;
+            u.setUserid(getGuiManager().getUserManager().getIDFromEmail(u.getEmail()));
+
             getGuiManager().switchToUebersichtGUI();
         }
     }

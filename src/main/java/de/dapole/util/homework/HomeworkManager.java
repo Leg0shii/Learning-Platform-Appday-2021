@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 @RequiredArgsConstructor
 public class HomeworkManager {
@@ -23,9 +24,20 @@ public class HomeworkManager {
                 homework.setTitle(resultSet.getString("title"));
                 homework.setType(resultSet.getInt("type"));
                 homework.setDone(resultSet.getInt("done"));
+                homework.setUserid(resultSet.getInt("userid"));
+                homework.setHelperids(getHelperIds(resultSet.getString("helperids")));
             }
         } catch (SQLException e) { e.printStackTrace(); }
 
         return homework;
     }
+
+    public ArrayList<Integer> getHelperIds(String helpers) {
+
+        String[] hs = helpers.split(";");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for(String h : hs) arrayList.add(Integer.parseInt(h));
+        return arrayList;
+    }
+
 }

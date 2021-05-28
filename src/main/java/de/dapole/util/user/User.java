@@ -11,6 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class User {
 
+    private int userid;
+
     private String prename;
     private String surname;
     private String uni;
@@ -28,6 +30,7 @@ public class User {
     private float levelTutor;
     private float expLearning;
     private float levelLearning;
+    private int trustworthy;
 
     private String moduleInfo;
     private String time;

@@ -1,8 +1,11 @@
 package de.dapole.gui.loginsignup;
 
+import de.dapole.Application;
 import de.dapole.gui.GUI;
 import de.dapole.gui.GUIManager;
+import de.dapole.util.TrustScore;
 import de.dapole.util.user.User;
+import de.dapole.util.user.UserManager;
 import lombok.Getter;
 import lombok.Setter;
 import org.kordamp.ikonli.carbonicons.CarbonIcons;
@@ -92,13 +95,18 @@ public class LoginSignupGUI extends GUI {
         }
 
         User user = new User();
+        TrustScore trustScore = new TrustScore();
+
         user.setSurname(surname);
+        if(trustScore.isFullname(surname)) user.setTrustworthy(user.getTrustworthy()+1);
         user.setPrename(firstname);
+        if(trustScore.isFullname(firstname)) user.setTrustworthy(user.getTrustworthy()+1);
         user.setEmail(email);
+        if(trustScore.validate(email)) user.setTrustworthy(user.getTrustworthy()+1);
         user.setPassword(passwordOrigin);
 
         // TODO: Check if email already registered
-        if (getGuiManager().getUserManager().retrieveUser(email).getEmail() != null) {
+        if (getGuiManager().getUserManager().checkEmailInUse(email)) {
             signupErrorLabel.setText("Email schon vergeben!");
             return;
         }
@@ -109,8 +117,10 @@ public class LoginSignupGUI extends GUI {
     private void loginFunction() {
         String email = loginEmailTextField.getText();
         String password = new String(loginPasswordField.getPassword());
+        UserManager userManager = getGuiManager().getUserManager();
 
-        User user = getGuiManager().getUserManager().retrieveUser(email);
+        User user = userManager.retrieveUser(userManager.getIDFromEmail(email));
+        Application.getApplication().user = user;
         // TODO: Switch to Overview
         if (user.getPassword() != null) {
             if (user.getPassword().equals(password)) {

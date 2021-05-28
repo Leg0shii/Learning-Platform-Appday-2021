@@ -12,9 +12,9 @@ public class UserManager {
 
     private final AsyncMySQL mySQL;
 
-    public User retrieveUser(String email) {
+    public User retrieveUser(int userid) {
 
-        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = \"" + email + "\";");
+        ResultSet resultSet = mySQL.query("SELECT * FROM users where userid = " + userid + ";");
         User user = new User();
 
         try {
@@ -37,6 +37,8 @@ public class UserManager {
                 user.setLevelLearning(resultSet.getInt("levellearning"));
                 user.setLevelTutor(resultSet.getInt("leveltutor"));
                 user.setSearching(resultSet.getInt("searching"));
+                user.setTrustworthy(resultSet.getInt("trustworthy"));
+                user.setUserid(resultSet.getInt("userid"));
             }
         } catch (SQLException e) { e.printStackTrace(); }
         return user;
@@ -89,4 +91,18 @@ public class UserManager {
 
     }
 
+    public int getIDFromEmail(String email) {
+
+        int userid = -1;
+        ResultSet resultSet = mySQL.query("SELECT userid FROM users WHERE email = '" + email + "';");
+        try {
+            if(resultSet.next()) {
+                userid = resultSet.getInt("userid");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return userid;
+    }
 }

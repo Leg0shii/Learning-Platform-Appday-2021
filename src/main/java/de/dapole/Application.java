@@ -7,6 +7,7 @@ import de.dapole.gui.GUIManager;
 import de.dapole.util.ModuleInfo;
 import de.dapole.util.group.GroupManager;
 import de.dapole.util.homework.HomeworkManager;
+import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 
 import javax.swing.*;
@@ -22,7 +23,12 @@ public class Application {
     private GroupManager groupManager;
     private ModuleInfo moduleInfo;
 
+    public static Application application;
+    public User user;
+
     public void onStart() {
+
+        application = this;
 
         FlatArcOrangeIJTheme.setup();
         UIManager.put( "Button.arc", 999 );
@@ -43,5 +49,9 @@ public class Application {
         moduleInfo = new ModuleInfo(mySQL);
 
         new GUIManager(dbManager, userManager, moduleInfo);
+    }
+
+    public static Application getApplication() {
+        return application;
     }
 }
