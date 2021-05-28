@@ -3,7 +3,7 @@ package de.dapole.util;
 public class Leveling {
 
     public static int calcNextLevelEXP(int previouslevel) {
-        return previouslevel*2 + 100;
+        return (int) (25 * Math.pow(2, previouslevel));
     }
 
     public static float timeToEXP(float ms) {
