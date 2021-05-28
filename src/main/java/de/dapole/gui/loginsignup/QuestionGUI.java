@@ -18,6 +18,7 @@ public class QuestionGUI extends GUI {
     private JButton noButton;
     private JLabel questionLabel;
     private JPanel subSubPanel;
+    private JButton backButton;
     private User user;
     private Stack<String> questions;
     private ArrayList<String> modules;
@@ -48,11 +49,17 @@ public class QuestionGUI extends GUI {
         questionLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         questionLabel.setText(question);
         subSubPanel.setBorder(BorderFactory.createEtchedBorder());
+        backButton.setText("Zurück");
     }
 
     private void setupListeners(){
         yesButton.addActionListener(e -> yesFunction());
         noButton.addActionListener(e -> noFunction());
+        backButton.addActionListener(e -> backFunction());
+    }
+
+    private void backFunction() {
+        getGuiManager().switchToTimeChooserGUI(user);
     }
 
     private void noFunction() {

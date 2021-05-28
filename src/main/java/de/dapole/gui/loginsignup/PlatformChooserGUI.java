@@ -21,6 +21,7 @@ public class PlatformChooserGUI extends GUI {
     private JCheckBox whatsappCheckBox;
     private JCheckBox discordCheckBox;
     private JCheckBox telegramCheckBox;
+    private JButton backButton;
     private User user;
 
     public PlatformChooserGUI(GUIManager guiManager, User user) {
@@ -56,10 +57,17 @@ public class PlatformChooserGUI extends GUI {
         telegramLabel.setIcon(telegramIcon);
 
         confirmButton.setText("Okay");
+
+        backButton.setText("Zurück");
     }
 
     private void setupListeners() {
         confirmButton.addActionListener(e -> confirmFunction());
+        backButton.addActionListener(e -> backFunction());
+    }
+
+    private void backFunction() {
+        getGuiManager().switchToLoginSignupGUI();
     }
 
     private void confirmFunction() {
