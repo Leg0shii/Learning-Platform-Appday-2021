@@ -39,6 +39,15 @@ public class ProfileGUI extends GUI {
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setText(user.getSurname());
         this.backButton.setText("Zurück");
+        updateAvatar();
+    }
+
+    public void updateGUI(){
+        updateAvatar();
+    }
+
+    private void updateAvatar(){
+        avatarPanel.removeAll();
         switch (user.getCumulatedLevel()) {
             case 0, 1 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0.png")));
@@ -50,10 +59,24 @@ public class ProfileGUI extends GUI {
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
+            case 4,5 -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar2.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            default -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar3.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
         }
     }
 
     private void setupListeners() {
+        backButton.addActionListener(e -> homefunction());
+    }
 
+    private void homefunction() {
+        getGuiManager().switchToOverviewGUI();
     }
 }
