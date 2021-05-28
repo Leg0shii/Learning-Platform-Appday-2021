@@ -49,7 +49,7 @@ public class NewHomeWorkGUI extends GUI {
 
         Homework homework = new Homework(user.getUserid(), new ArrayList<>(), theme1, exact1, 0, 0);
         getGuiManager().getDbManager().addHomework(homework);
-
+        getGuiManager().switchToOverviewGUI();
     }
 
 }
