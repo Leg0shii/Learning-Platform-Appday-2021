@@ -31,7 +31,11 @@ public class HomeworkGUI extends GUI{
 
     private void setupListeners(){
         homeButton.addActionListener(e -> homefunction());
+        getHelpButton.addActionListener(e -> getHelpFunction());
+
     }
+
+    private void getHelpFunction() { getGuiManager().switchToNewHomeWorkGUI(); }
 
     private void homefunction() {
         getGuiManager().switchToUebersichtGUI();
