@@ -103,6 +103,7 @@ public class LoginSignupGUI extends GUI {
             return;
         }
 
+        getGuiManager().setThisUser(user);
         getGuiManager().switchToPlatformChooserGUI(user);
     }
 
@@ -114,6 +115,7 @@ public class LoginSignupGUI extends GUI {
         // TODO: Switch to Overview
         if (user.getPassword() != null) {
             if (user.getPassword().equals(password)) {
+                getGuiManager().setThisUser(user);
                 getGuiManager().switchToUebersichtGUI();
             }
         } else {
