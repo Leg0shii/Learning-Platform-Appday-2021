@@ -1,6 +1,7 @@
 package de.dapole.util.user;
 
 import de.dapole.database.AsyncMySQL;
+import de.dapole.util.Leveling;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.ResultSet;
@@ -47,6 +48,45 @@ public class UserManager {
         try { return resultSet.next(); }
         catch (SQLException e) { e.printStackTrace(); }
         return false;
+    }
+
+    public void updateEXP(int userid, int gainedEXP, int type) {
+
+        if(type == 0) { // tutor
+            ResultSet resultSet = mySQL.query("SELECT exptutor, leveltutor FROM users WHERE userid = " + userid + ";");
+            try {
+                if(resultSet.next()) {
+                    float currentEXP = resultSet.getFloat("exptutor");
+                    int leveltutor = resultSet.getInt("leveltutor");
+                    if(currentEXP + gainedEXP >= Leveling.calcNextLevelEXP(leveltutor)) {
+                        // levelup
+                        float over = (currentEXP + gainedEXP - Leveling.calcNextLevelEXP(leveltutor));
+                        mySQL.update("UPDATE users SET exptutor = " + over + ", leveltutor = " + (leveltutor + 1) + " WHERE userid = " + userid + ";");
+                    } else {
+                        // add gainedEXP
+                        mySQL.update("UPDATE users SET exptutor = " + (currentEXP + gainedEXP) + " WHERE userid = " + userid + ";");
+                    }
+                }
+            } catch (SQLException e) { e.printStackTrace(); }
+        } else if(type == 1) { // learning
+            ResultSet resultSet = mySQL.query("SELECT explearning, levellearning FROM users WHERE userid = " + userid + ";");
+            try {
+                if(resultSet.next()) {
+                    float currentEXP = resultSet.getFloat("explearning");
+                    int leveltutor = resultSet.getInt("levellearning");
+                    if(currentEXP + gainedEXP >= Leveling.calcNextLevelEXP(leveltutor)) {
+                        // levelup
+                        float over = (currentEXP + gainedEXP - Leveling.calcNextLevelEXP(leveltutor));
+                        mySQL.update("UPDATE users SET explearning = " + over + ", levellearning = " + (leveltutor + 1) + " WHERE userid = " + userid + ";");
+                    } else {
+                        // add gainedEXP
+                        mySQL.update("UPDATE users SET explearning = " + (currentEXP + gainedEXP) + " WHERE userid = " + userid + ";");
+                    }
+                }
+            } catch (SQLException e) { e.printStackTrace(); }
+
+        }
+
     }
 
 }
