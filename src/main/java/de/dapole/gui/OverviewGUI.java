@@ -23,6 +23,11 @@ public class OverviewGUI extends GUI{
 
     private void setupListeners() {
         homeworkButton.addActionListener(e -> gotoHausaufgaben());
+        profileButton.addActionListener(e -> profileFunction());
+    }
+
+    private void profileFunction() {
+        getGuiManager().switchToProfileGUI();
     }
 
     private void gotoHausaufgaben() {
