@@ -39,6 +39,15 @@ public class ProfileGUI extends GUI {
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setText(user.getSurname());
         this.backButton.setText("Zurück");
+        updateAvatar();
+    }
+
+    public void updateGUI(){
+        updateAvatar();
+    }
+
+    private void updateAvatar(){
+        avatarPanel.removeAll();
         switch (user.getCumulatedLevel()) {
             case 0, 1 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0.png")));
