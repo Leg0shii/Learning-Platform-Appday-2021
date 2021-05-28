@@ -19,6 +19,8 @@ public class GUIManager extends JFrame {
     private PlatformSpecifierGUI platformSpecifierGUI;
     private Hausaufgaben hausaufgabenGUI;
     private uebersichtGUI uebersichtGUI;
+    private UniChooserGUI uniChooserGUI;
+    private TimeChooserGUI timeChooserGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
 
@@ -72,6 +74,18 @@ public class GUIManager extends JFrame {
     public void switchToPlatformSpecifierGUI(ArrayList<String> p, User user){
         platformSpecifierGUI = new PlatformSpecifierGUI(this, p, user);
         this.setContentPane(platformSpecifierGUI);
+        this.revalidate();
+    }
+
+    public void switchToUniChooserGUI(User user){
+        uniChooserGUI = new UniChooserGUI(this, user);
+        this.setContentPane(uniChooserGUI);
+        this.revalidate();
+    }
+
+    public void switchToTimeChooserGUI(User user){
+        timeChooserGUI = new TimeChooserGUI(this, user);
+        this.setContentPane(timeChooserGUI);
         this.revalidate();
     }
 }
