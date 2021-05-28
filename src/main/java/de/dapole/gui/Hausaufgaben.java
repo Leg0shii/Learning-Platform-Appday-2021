@@ -30,7 +30,11 @@ public class Hausaufgaben extends GUI{
     }
 
     private void setupListeners(){
+        homeButton.addActionListener(e -> homefunction());
+    }
 
+    private void homefunction() {
+        getGuiManager().switchToUebersichtGUI();
     }
 
 }
