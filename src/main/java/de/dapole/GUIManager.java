@@ -1,4 +1,4 @@
-package gui;
+package de.dapole;
 
 import javax.swing.*;
 
