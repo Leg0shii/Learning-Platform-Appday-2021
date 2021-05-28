@@ -3,11 +3,16 @@ package de.dapole.database;
 import de.dapole.util.group.Group;
 import de.dapole.util.homework.Homework;
 import de.dapole.util.user.User;
+import de.dapole.util.user.UserManager;
+import lombok.RequiredArgsConstructor;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@RequiredArgsConstructor
 public class DBManager {
 
+    private final UserManager userManager;
     private AsyncMySQL mySQL;
 
     private void connectToDB() {
@@ -15,7 +20,9 @@ public class DBManager {
         try {
             this.mySQL = new AsyncMySQL("5.196.174.213", 3306, "root", "qexGGHZfFzWyKYE", "appdaydb");
             System.out.println("Successfully connected to database!");
-        } catch (SQLException | ClassNotFoundException throwables) { throwables.printStackTrace(); }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
@@ -75,6 +82,26 @@ public class DBManager {
     public void setSearchingDone(int userid) {
 
         mySQL.update("UPDATE users SET searching = 1 WHERE userid = " + userid + ";");
+    }
+
+    public User[] getTop10(int type) {
+
+        User[] leaderboard = new User[10];
+        ResultSet resultSet;
+
+        if (type == 0) resultSet = mySQL.query("SELECT email FROM users ORDER BY leveltutor ASC;");
+        else resultSet = mySQL.query("SELECT email FROM users ORDER BY levellearning ASC;");
+
+        int count = 0;
+        try {
+            while (resultSet.next() && count < 10) {
+                leaderboard[count] = userManager.retrieveUser(resultSet.getString("email"));
+                count++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return leaderboard;
     }
 
 }
