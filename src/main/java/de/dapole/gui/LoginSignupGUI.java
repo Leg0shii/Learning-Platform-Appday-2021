@@ -115,5 +115,6 @@ public class LoginSignupGUI extends GUI {
         } else {
             loginErrorLabel.setText("Falsche Anmeldedaten");
         }
+        getGuiManager().switchToUebersichtGUI();
     }
 }

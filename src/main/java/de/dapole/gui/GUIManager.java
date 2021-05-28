@@ -17,6 +17,8 @@ public class GUIManager extends JFrame {
     private LoginSignupGUI loginSignupGUI;
     private PlatformChooserGUI platformChooserGUI;
     private PlatformSpecifierGUI platformSpecifierGUI;
+    private Hausaufgaben hausaufgabenGUI;
+    private uebersichtGUI uebersichtGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
 
@@ -52,6 +54,18 @@ public class GUIManager extends JFrame {
     public void switchToPlatformChooserGUI(User user){
         platformChooserGUI = new PlatformChooserGUI(this, user);
         this.setContentPane(platformChooserGUI);
+        this.revalidate();
+    }
+
+    public void switchToHausaufgaben(){
+        hausaufgabenGUI = new Hausaufgaben(this);
+        this.setContentPane(hausaufgabenGUI);
+        this.revalidate();
+    }
+
+    public void switchToUebersichtGUI(){
+        uebersichtGUI = new uebersichtGUI(this);
+        this.setContentPane(uebersichtGUI);
         this.revalidate();
     }
 
