@@ -46,7 +46,7 @@ public class UserManager {
 
     public boolean checkEmailInUse(String email) {
 
-        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = " + email + ";");
+        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = '" + email + "';");
         try { return resultSet.next(); }
         catch (SQLException e) { e.printStackTrace(); }
         return false;

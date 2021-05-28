@@ -65,8 +65,8 @@ public class QuestionGUI extends GUI {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
             getGuiManager().getDbManager().addStudent(user);
 
-            User u = Application.getApplication().user;
-            u.setUserid(getGuiManager().getUserManager().getIDFromEmail(u.getEmail()));
+            user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
+            Application.getApplication().user = user;
 
             getGuiManager().switchToOverviewGUI();
         }
@@ -82,8 +82,8 @@ public class QuestionGUI extends GUI {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
             getGuiManager().getDbManager().addStudent(user);
 
-            User u = Application.getApplication().user;
-            u.setUserid(getGuiManager().getUserManager().getIDFromEmail(u.getEmail()));
+            user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
+            Application.getApplication().user = user;
 
             getGuiManager().switchToOverviewGUI();
         }
