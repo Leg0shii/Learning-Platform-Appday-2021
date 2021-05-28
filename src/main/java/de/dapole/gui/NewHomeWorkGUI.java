@@ -30,7 +30,8 @@ public class NewHomeWorkGUI extends GUI {
 
 
 
-        quoteLabel.setText("Jeder brauch mal Hilfe");
+        quoteLabel.setFont(getFont().deriveFont(Font.BOLD,14));
+        quoteLabel.setText("Jeder braucht mal Hilfe");
         exactTextArea.setText(exact);
         themeTextField.setText(theme);
         infoTextPane.setText("Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt.");

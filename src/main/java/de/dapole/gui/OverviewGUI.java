@@ -1,13 +1,14 @@
 package de.dapole.gui;
 
+import lombok.Getter;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class OverviewGUI extends GUI{
     private JButton profileButton;
     private JButton leaderboardButton;
-    private JButton lerngroupButton;
-    private JButton homeworkButton;
+    private JMenuBar homeworkButton;
     private JLabel uebersichtLabel;
     private JPanel subPanel;
     private JPanel mainPanel;
@@ -22,7 +23,6 @@ public class OverviewGUI extends GUI{
     }
 
     private void setupListeners() {
-        homeworkButton.addActionListener(e -> gotoHausaufgaben());
         profileButton.addActionListener(e -> profileFunction());
     }
 
@@ -30,15 +30,14 @@ public class OverviewGUI extends GUI{
         getGuiManager().switchToProfileGUI();
     }
 
-    private void gotoHausaufgaben() {
-        getGuiManager().switchToHausaufgaben();
-    }
-
     private void setupGUI() {
-        this.uebersichtLabel.setText("UEBERSICHT");
+        this.uebersichtLabel.setFont(getFont().deriveFont(Font.BOLD,20));
+        this.uebersichtLabel.setText("Übersicht");
         this.profileButton.setText("Profil");
         this.leaderboardButton.setText("Leaderboard");
-        this.lerngroupButton.setText("Lerngruppe");
-        this.homeworkButton.setText("Hilfegesuche");
+        JMenu menu = new JMenu("Hilfegesuche");
+        JMenuItem item = new JMenuItem();
+        menu.add(new HomeworkGUI(getGuiManager()));
+        this.homeworkButton.add(menu);
     }
 }

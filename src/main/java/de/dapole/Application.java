@@ -39,6 +39,8 @@ public class Application {
         UIManager.put( "TabbedPane.showTabSeparators", true );
         UIManager.put("Button.endBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor"));
         UIManager.put("Button.default.startBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor"));
+        UIManager.put("MenuBar.background", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter().brighter());
+        UIManager.put("MenuBar.hoverBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter());
 
         dbManager = new DBManager(userManager);
         mySQL = dbManager.initTables();
