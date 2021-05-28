@@ -40,11 +40,11 @@ public class DBManager {
         mySQL.update("INSERT INTO unidb (uniname, modules) VALUES ('" + uniname + "', '" + submodules + "');");
     }
 
-    public void addStudent(User user, String moduleInfo ,String password) {
+    public void addStudent(User user) {
 
         mySQL.update("INSERT INTO users (vorname, nachname, email, passwort, whatsapp, discord, telegram, uni, studiengang, zeit, leveloeffentlich, studenganginfo) VALUES " +
             "('" + user.getPrename() + "', '" + user.getSurname() + "', '" + user.getEmail() + "', '" + user.getPassword() + "','" + user.getWhatsapp() + "' , '" + user.getDiscord() + "'," +
-            "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + moduleInfo + "');");
+            "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + user.getModuleInfo() + "');");
     }
 
 }

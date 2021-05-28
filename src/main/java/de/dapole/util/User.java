@@ -22,6 +22,7 @@ public class User {
     private String telegram;
     private String discord;
 
+    private String moduleInfo;
     private String time;
     private int levelpublic;
 
