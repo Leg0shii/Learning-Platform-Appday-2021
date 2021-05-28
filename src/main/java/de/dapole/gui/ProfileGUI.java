@@ -72,6 +72,10 @@ public class ProfileGUI extends GUI {
         }
     }
 
+    private void updateEXP(){
+
+    }
+
     private void setupListeners() {
         backButton.addActionListener(e -> homefunction());
     }
