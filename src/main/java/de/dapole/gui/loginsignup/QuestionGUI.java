@@ -1,5 +1,7 @@
-package de.dapole.gui;
+package de.dapole.gui.loginsignup;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.ModuleInfo;
 import de.dapole.util.user.User;
 
@@ -8,12 +10,13 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class QuestionGUI extends GUI{
+public class QuestionGUI extends GUI {
     private JPanel mainPanel;
     private JPanel subPanel;
     private JButton yesButton;
     private JButton noButton;
     private JLabel questionLabel;
+    private JPanel subSubPanel;
     private User user;
     private Stack<String> questions;
     private ArrayList<String> modules;
@@ -34,12 +37,16 @@ public class QuestionGUI extends GUI{
     }
 
     private void setupGUI() {
-        yesButton.setText("Ja");
-        noButton.setText("Nein");
-        yesButton.putClientProperty("JComponent.roundRect", false);
+
+        yesButton.setText("Kann ich gut");
+        noButton.setText("Kann ich nicht so gut");
+        yesButton.setBackground(Color.GREEN);
+        noButton.setBackground(Color.RED);
         String question = questions.pop();
         modules.add(question);
+        questionLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         questionLabel.setText(question);
+        subSubPanel.setBorder(BorderFactory.createEtchedBorder());
     }
 
     private void setupListeners(){
@@ -55,6 +62,8 @@ public class QuestionGUI extends GUI{
             questionLabel.setText(question);
         } else {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
+            getGuiManager().getDbManager().addStudent(user);
+            getGuiManager().switchToUebersichtGUI();
         }
     }
 
@@ -66,6 +75,8 @@ public class QuestionGUI extends GUI{
             questionLabel.setText(question);
         } else {
             user.setModuleInfo(getGuiManager().getModuleInfo().setAnswersToQuestions(modules,answers));
+            getGuiManager().getDbManager().addStudent(user);
+            getGuiManager().switchToUebersichtGUI();
         }
     }
 }

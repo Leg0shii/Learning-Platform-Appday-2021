@@ -1,5 +1,7 @@
-package de.dapole.gui;
+package de.dapole.gui.loginsignup;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.user.User;
 import lombok.Getter;
 import lombok.Setter;
@@ -76,8 +78,8 @@ public class LoginSignupGUI extends GUI {
     }
 
     private void signupFunction() {
-        String surname = signupSurnameLabel.getText();
-        String firstname = signupFirstnameLabel.getText();
+        String surname = signupSurnameTextField.getText();
+        String firstname = signupFirstnameTextField.getText();
         String email = signupEmailTextField.getText();
         String passwordOrigin = new String(signupPasswordOriginField.getPassword());
         String passwordCheck = new String(signupPasswordCheckField.getPassword());

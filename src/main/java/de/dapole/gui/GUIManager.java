@@ -1,6 +1,7 @@
 package de.dapole.gui;
 
 import de.dapole.database.DBManager;
+import de.dapole.gui.loginsignup.*;
 import de.dapole.util.ModuleInfo;
 import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;

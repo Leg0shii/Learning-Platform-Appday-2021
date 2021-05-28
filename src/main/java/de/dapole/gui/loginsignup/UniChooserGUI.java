@@ -1,11 +1,13 @@
-package de.dapole.gui;
+package de.dapole.gui.loginsignup;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.user.User;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class UniChooserGUI extends GUI{
+public class UniChooserGUI extends GUI {
     private JPanel mainPanel;
     private JComboBox<String> collegeComboBox;
     private JComboBox<String> moduleComboBox;

@@ -1,5 +1,7 @@
-package de.dapole.gui;
+package de.dapole.gui.loginsignup;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.user.User;
 import lombok.Getter;
 import lombok.Setter;
