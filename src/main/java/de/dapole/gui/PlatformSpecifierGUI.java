@@ -90,5 +90,7 @@ public class PlatformSpecifierGUI extends GUI {
         user.setDiscord(discord);
         user.setWhatsapp(whatsapp);
         user.setTelegram(telegram);
+
+        getGuiManager().switchToUniChooserGUI(user);
     }
 }
