@@ -39,6 +39,23 @@ public class ProfileGUI extends GUI {
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setText(user.getSurname());
         this.backButton.setText("Zurück");
+
+        int width = 100;
+        int height = 200;
+
+        this.tutorLevelPanel.setLayout(new GridLayout(1,1));
+        this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
+        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / (25 * Math.pow(2, user.getLevelTutor() -1)) );
+        this.tutorLevelPanel.add(d);
+        this.tutorLevelPanel.repaint();
+
+        this.learnLevelPanel.setLayout(new GridLayout(1,1));
+        this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
+        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / (25 * Math.pow(2, user.getLevelLearning() -1)) );
+        this.learnLevelPanel.add(e);
+        this.learnLevelPanel.repaint();
+
+
         updateAvatar();
     }
 
@@ -76,6 +93,8 @@ public class ProfileGUI extends GUI {
 
     }
 
+
+
     private void setupListeners() {
         backButton.addActionListener(e -> homefunction());
     }
@@ -84,3 +103,5 @@ public class ProfileGUI extends GUI {
         getGuiManager().switchToOverviewGUI();
     }
 }
+
+
