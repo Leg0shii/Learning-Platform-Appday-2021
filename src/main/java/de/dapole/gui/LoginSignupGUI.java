@@ -1,4 +1,4 @@
-package de.dapole;
+package de.dapole.gui;
 
 import lombok.Getter;
 import lombok.Setter;
