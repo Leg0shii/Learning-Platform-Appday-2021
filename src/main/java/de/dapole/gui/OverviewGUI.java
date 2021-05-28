@@ -9,6 +9,7 @@ public class OverviewGUI extends GUI{
     private JButton lerngroupButton;
     private JButton homeworkButton;
     private JLabel uebersichtLabel;
+    private JPanel subPanel;
     private JPanel mainPanel;
 
     public OverviewGUI(GUIManager guiManager) {
