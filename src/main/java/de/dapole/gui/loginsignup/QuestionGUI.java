@@ -85,7 +85,7 @@ public class QuestionGUI extends GUI {
             user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
             Application.getApplication().user = user;
 
-            getGuiManager().switchToOverviewGUI();
+            getGuiManager().switchToNoticeGUI();
         }
     }
 }

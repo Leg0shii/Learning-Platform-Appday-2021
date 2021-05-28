@@ -19,6 +19,7 @@ public class GUIManager extends JFrame {
     private PlatformChooserGUI platformChooserGUI;
     private PlatformSpecifierGUI platformSpecifierGUI;
     private HomeworkGUI hausaufgabenGUI;
+    private NoticeGUI noticeGUI;
     private OverviewGUI overviewGUI;
     private UniChooserGUI uniChooserGUI;
     private TimeChooserGUI timeChooserGUI;
@@ -71,7 +72,11 @@ public class GUIManager extends JFrame {
         this.setContentPane(hausaufgabenGUI);
         this.revalidate();
     }
-
+    public void switchToNoticeGUI(){
+        noticeGUI = new NoticeGUI(this);
+        this.setContentPane(noticeGUI);
+        this.revalidate();
+    }
     public void switchToOverviewGUI(){
         overviewGUI = new OverviewGUI(this);
         this.setContentPane(overviewGUI);
