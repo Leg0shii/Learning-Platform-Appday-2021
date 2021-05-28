@@ -6,6 +6,7 @@ import de.dapole.util.user.User;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class UniChooserGUI extends GUI {
     private JPanel mainPanel;
@@ -15,6 +16,7 @@ public class UniChooserGUI extends GUI {
     private JLabel collegeLabel;
     private JLabel moduleLabel;
     private JPanel subPanel;
+    private JButton backButton;
     private final User user;
 
     public UniChooserGUI(GUIManager guiManager, User user) {
@@ -27,16 +29,32 @@ public class UniChooserGUI extends GUI {
         setupListeners();
     }
 
-    private void setupGUI(){
+    private void setupGUI() {
         collegeLabel.setText("Wähle deine Universität aus");
         collegeComboBox.addItem("Universität Rostock");
         moduleLabel.setText("Wähle deinen Studiengang aus");
         moduleComboBox.addItem("Informatik");
         okayButton.setText("Okay");
+        backButton.setText("Zurück");
     }
 
     private void setupListeners() {
         okayButton.addActionListener(e -> okayFunction());
+        backButton.addActionListener(e -> backFunction());
+    }
+
+    private void backFunction() {
+        ArrayList<String> list = new ArrayList<>();
+        if (!user.getDiscord().equals("")) {
+            list.add("Discord");
+        }
+        if (!user.getWhatsapp().equals("")) {
+            list.add("WhatsApp");
+        }
+        if (!user.getTelegram().equals("")) {
+            list.add("Telegram");
+        }
+        getGuiManager().switchToPlatformSpecifierGUI(list, user);
     }
 
     private void okayFunction() {

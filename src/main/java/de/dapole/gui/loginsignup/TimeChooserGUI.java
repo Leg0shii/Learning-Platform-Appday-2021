@@ -26,6 +26,7 @@ public class TimeChooserGUI extends GUI {
     private JLabel frLabel;
     private JLabel saLabel;
     private JLabel suLabel;
+    private JButton backButton;
     private final User user;
 
     public TimeChooserGUI(GUIManager guiManager, User user) {
@@ -48,10 +49,16 @@ public class TimeChooserGUI extends GUI {
         this.saLabel.setText("Sa");
         this.suLabel.setText("So");
         this.okayButton.setText("Okay");
+        backButton.setText("Zurück");
     }
 
     private void setupListeners() {
         okayButton.addActionListener(e -> okayFunction());
+        backButton.addActionListener(e -> backFunction());
+    }
+
+    private void backFunction() {
+        getGuiManager().switchToUniChooserGUI(user);
     }
 
     private void okayFunction() {
