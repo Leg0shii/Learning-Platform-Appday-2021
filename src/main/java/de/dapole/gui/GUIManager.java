@@ -1,23 +1,32 @@
 package de.dapole.gui;
 
 import de.dapole.database.DBManager;
+import de.dapole.util.user.User;
+import de.dapole.util.user.UserManager;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import javax.swing.*;
 import java.net.URL;
+import java.util.ArrayList;
 
 @Getter
 @Setter
 public class GUIManager extends JFrame {
     private LoginSignupGUI loginSignupGUI;
     private PlatformChooserGUI platformChooserGUI;
-    private DBManager dbManager;
+    private PlatformSpecifierGUI platformSpecifierGUI;
+    private final DBManager dbManager;
+    private final UserManager userManager;
 
-    public GUIManager (){
+    public GUIManager (DBManager dbManager, UserManager userManager){
         super("DaPoLe Appday 2021");
         this.setSize(500,500);
         this.setLocationRelativeTo(null);
+        this.dbManager = dbManager;
+        this.userManager = userManager;
+
         URL iconURL = getClass().getResource("../../../DaPole.png");
         assert iconURL != null;
         ImageIcon icon = new ImageIcon(iconURL);
@@ -27,14 +36,11 @@ public class GUIManager extends JFrame {
 
         setupGUI();
 
-        this.dbManager = new DBManager();
-
         switchToLoginSignupGUI();
     }
 
     private void setupGUI(){
         loginSignupGUI = new LoginSignupGUI(this);
-        platformChooserGUI = new PlatformChooserGUI(this);
     }
 
     public void switchToLoginSignupGUI(){
@@ -43,9 +49,15 @@ public class GUIManager extends JFrame {
         this.revalidate();
     }
 
-    public void switchToPlatformChooserGUI(){
-
+    public void switchToPlatformChooserGUI(User user){
+        platformChooserGUI = new PlatformChooserGUI(this, user);
         this.setContentPane(platformChooserGUI);
+        this.revalidate();
+    }
+
+    public void switchToPlatformSpecifierGUI(ArrayList<String> p, User user){
+        platformSpecifierGUI = new PlatformSpecifierGUI(this, p, user);
+        this.setContentPane(platformSpecifierGUI);
         this.revalidate();
     }
 }

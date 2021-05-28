@@ -11,18 +11,14 @@ import java.awt.*;
 
 @Getter
 @Setter
-public class LoginSignupGUI extends GUI{
+public class LoginSignupGUI extends GUI {
     private JPanel loginPanel;
     private JPanel signupPanel;
     private JTabbedPane tabPanel;
     private JPanel mainPanel;
-    private JTextField loginSurnameTextField;
-    private JTextField loginFirstnameTextField;
     private JPasswordField loginPasswordField;
     private JButton loginButton;
     private JPanel loginSubPanel;
-    private JLabel loginSurnameLabel;
-    private JLabel loginFirstnameLabel;
     private JLabel loginEmailLabel;
     private JLabel loginPasswordLabel;
     private JPasswordField signupPasswordOriginField;
@@ -41,16 +37,16 @@ public class LoginSignupGUI extends GUI{
     private JLabel signupErrorLabel;
     private JLabel loginErrorLabel;
 
-    public LoginSignupGUI(GUIManager guiManager){
+    public LoginSignupGUI(GUIManager guiManager) {
         super(guiManager);
-        this.setLayout(new GridLayout(1,1));
-        this.add(mainPanel);
+        this.setLayout(new GridLayout(1, 1));
+        add(mainPanel);
 
         setupGUI();
         setupListeners();
     }
 
-    private void setupGUI(){
+    private void setupGUI() {
         FontIcon loginIcon = new FontIcon();
         loginIcon.setIkon(CarbonIcons.LOGIN);
         loginIcon.setIconSize(25);
@@ -62,8 +58,6 @@ public class LoginSignupGUI extends GUI{
 
         loginButton.setFont(getFont().deriveFont(Font.BOLD));
 
-        loginSurnameLabel.setText("Name");
-        loginFirstnameLabel.setText("Vorname");
         loginEmailLabel.setText("E-Mail");
         loginPasswordLabel.setText("Passwort");
         loginButton.setText("Login");
@@ -76,7 +70,7 @@ public class LoginSignupGUI extends GUI{
         signupButton.setText("Login");
     }
 
-    private void setupListeners(){
+    private void setupListeners() {
         loginButton.addActionListener(e -> loginFunction());
         signupButton.addActionListener(e -> signupFunction());
     }
@@ -90,7 +84,7 @@ public class LoginSignupGUI extends GUI{
 
         signupErrorLabel.setText("");
 
-        if (!passwordOrigin.equals(passwordCheck)){
+        if (!passwordOrigin.equals(passwordCheck)) {
             signupErrorLabel.setText("Passwörter stimmen nicht überein!");
             return;
         }
@@ -101,16 +95,25 @@ public class LoginSignupGUI extends GUI{
         user.setEmail(email);
         user.setPassword(passwordOrigin);
 
-        getGuiManager().getDbManager().addStudent(user);
+        // TODO: Check if email already registered
+        if (getGuiManager().getUserManager().retrieveUser(email).getEmail() != null) {
+            signupErrorLabel.setText("Email schon vergeben!");
+            return;
+        }
+
+        getGuiManager().switchToPlatformChooserGUI(user);
     }
 
     private void loginFunction() {
-        String surname = loginSurnameLabel.getText();
-        String firstname = loginFirstnameLabel.getText();
         String email = loginEmailTextField.getText();
         String password = new String(loginPasswordField.getPassword());
 
-        getGuiManager().switchToPlatformChooserGUI();
+        User user = getGuiManager().getUserManager().retrieveUser(email);
+        // TODO: Switch to Overview
+        if (user.getPassword().equals(password)) {
 
+        } else {
+            loginErrorLabel.setText("Falsche Anmeldedaten");
+        }
     }
 }

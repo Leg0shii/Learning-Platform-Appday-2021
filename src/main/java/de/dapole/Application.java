@@ -43,6 +43,6 @@ public class Application {
         homeworkManager = new HomeworkManager(mySQL);
         groupManager = new GroupManager(mySQL);
 
-        new GUIManager();
+        new GUIManager(dbManager, userManager);
     }
 }

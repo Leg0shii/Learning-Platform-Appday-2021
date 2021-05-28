@@ -14,7 +14,7 @@ public class UserManager {
 
     public User retrieveUser(String email) {
 
-        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = " + email + ";");
+        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = \"" + email + "\";");
         User user = new User();
 
         try {

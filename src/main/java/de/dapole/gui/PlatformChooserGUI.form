@@ -43,7 +43,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="5b636" class="javax.swing.JRadioButton" binding="whatsappRadioButton">
+          <component id="9266d" class="javax.swing.JCheckBox" binding="whatsappCheckBox">
             <constraints>
               <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -52,7 +52,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="772a7" class="javax.swing.JRadioButton" binding="discordRadioButton">
+          <component id="c1fde" class="javax.swing.JCheckBox" binding="discordCheckBox">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -61,7 +61,7 @@
               <text value=""/>
             </properties>
           </component>
-          <component id="f38f9" class="javax.swing.JRadioButton" binding="telegramRadioButton">
+          <component id="8a0ab" class="javax.swing.JCheckBox" binding="telegramCheckBox">
             <constraints>
               <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
