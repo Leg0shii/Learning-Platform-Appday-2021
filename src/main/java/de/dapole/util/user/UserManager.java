@@ -11,9 +11,9 @@ public class UserManager {
 
     private final AsyncMySQL mySQL;
 
-    public User retrieveUser(int userid) {
+    public User retrieveUser(String email) {
 
-        ResultSet resultSet = mySQL.query("SELECT * FROM users where userid = " + userid + ";");
+        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = " + email + ";");
         User user = new User();
 
         try {
@@ -39,6 +39,14 @@ public class UserManager {
             }
         } catch (SQLException e) { e.printStackTrace(); }
         return user;
+    }
+
+    public boolean checkEmailInUse(String email) {
+
+        ResultSet resultSet = mySQL.query("SELECT * FROM users where email = " + email + ";");
+        try { return resultSet.next(); }
+        catch (SQLException e) { e.printStackTrace(); }
+        return false;
     }
 
 }
