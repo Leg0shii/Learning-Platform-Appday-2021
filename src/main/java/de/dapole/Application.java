@@ -1,19 +1,16 @@
 package de.dapole;
 
-import com.formdev.flatlaf.intellijthemes.FlatArcIJTheme;
+import com.formdev.flatlaf.intellijthemes.FlatArcOrangeIJTheme;
 import de.dapole.database.AsyncMySQL;
 import de.dapole.database.DBManager;
 import de.dapole.gui.GUIManager;
-import de.dapole.util.group.Group;
+import de.dapole.util.ModuleInfo;
 import de.dapole.util.group.GroupManager;
 import de.dapole.util.homework.HomeworkManager;
-import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Iterator;
-import java.util.Set;
 
 public class Application {
 
@@ -23,10 +20,11 @@ public class Application {
     private UserManager userManager;
     private HomeworkManager homeworkManager;
     private GroupManager groupManager;
+    private ModuleInfo moduleInfo;
 
     public void onStart() {
 
-        FlatArcIJTheme.setup();
+        FlatArcOrangeIJTheme.setup();
         UIManager.put( "Button.arc", 999 );
         UIManager.put( "Component.arc", 999 );
         UIManager.put( "ProgressBar.arc", 999 );
@@ -42,7 +40,8 @@ public class Application {
         userManager = new UserManager(mySQL);
         homeworkManager = new HomeworkManager(mySQL);
         groupManager = new GroupManager(mySQL);
+        moduleInfo = new ModuleInfo(mySQL);
 
-        new GUIManager(dbManager, userManager);
+        new GUIManager(dbManager, userManager, moduleInfo);
     }
 }

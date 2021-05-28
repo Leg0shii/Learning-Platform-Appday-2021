@@ -54,6 +54,7 @@ public class TimeChooserGUI extends GUI{
 
     private void okayFunction() {
         user.setTime(buildTimeString());
+        getGuiManager().switchToQuestionGUI(user);
     }
 
     private String buildTimeString(){

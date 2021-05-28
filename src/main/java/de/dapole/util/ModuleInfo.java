@@ -7,16 +7,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 @RequiredArgsConstructor
 public class ModuleInfo {
 
     private final AsyncMySQL mySQL;
 
-    public ArrayList<String> getQuestions(String modulename) {
+    public Stack<String> getQuestions(String modulename) {
 
-        ArrayList<String> arrayList = new ArrayList<>();
-        ResultSet resultSet = mySQL.query("SELECT modules FROM unidb WHERE modulename = '" + modulename + "';");
+        Stack<String> arrayList = new Stack<>();
+        ResultSet resultSet = mySQL.query("SELECT modules FROM unidb WHERE modulname = '" + modulename + "';");
         try {
             if (resultSet.next()) {
                 String[] modules = resultSet.getString("modules").split(";");

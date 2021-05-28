@@ -1,6 +1,7 @@
 package de.dapole.gui;
 
 import de.dapole.database.DBManager;
+import de.dapole.util.ModuleInfo;
 import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 import lombok.Getter;
@@ -20,15 +21,18 @@ public class GUIManager extends JFrame {
     private OverviewGUI uebersichtGUI;
     private UniChooserGUI uniChooserGUI;
     private TimeChooserGUI timeChooserGUI;
+    private QuestionGUI questionGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
+    private final ModuleInfo moduleInfo;
 
-    public GUIManager (DBManager dbManager, UserManager userManager){
+    public GUIManager (DBManager dbManager, UserManager userManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");
         this.setSize(500,500);
         this.setLocationRelativeTo(null);
         this.dbManager = dbManager;
         this.userManager = userManager;
+        this.moduleInfo = moduleInfo;
 
         URL iconURL = getClass().getResource("../../../DaPole.png");
         assert iconURL != null;
@@ -85,6 +89,12 @@ public class GUIManager extends JFrame {
     public void switchToTimeChooserGUI(User user){
         timeChooserGUI = new TimeChooserGUI(this, user);
         this.setContentPane(timeChooserGUI);
+        this.revalidate();
+    }
+
+    public void switchToQuestionGUI(User user){
+        questionGUI = new QuestionGUI(this,user);
+        this.setContentPane(questionGUI);
         this.revalidate();
     }
 }
