@@ -1,4 +1,4 @@
-package de.dapole.util;
+package de.dapole.util.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,6 +21,13 @@ public class User {
     private String whatsapp;
     private String telegram;
     private String discord;
+
+    private int searching;
+
+    private float expTutor;
+    private float levelTutor;
+    private float expLearning;
+    private float levelLearning;
 
     private String moduleInfo;
     private String time;

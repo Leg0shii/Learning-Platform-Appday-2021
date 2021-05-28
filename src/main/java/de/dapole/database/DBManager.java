@@ -1,6 +1,8 @@
 package de.dapole.database;
 
-import de.dapole.util.User;
+import de.dapole.util.group.Group;
+import de.dapole.util.homework.Homework;
+import de.dapole.util.user.User;
 
 import java.sql.SQLException;
 
@@ -23,14 +25,20 @@ public class DBManager {
 
         // modules
         // mathe1;mathe2;mathe3 ...
-        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniid INT, uniname VARCHAR(255), modulname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniid)");
+        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniid INT, uniname VARCHAR(255), modulname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniid));");
 
         // mathe1:0;mathe2:1; ...
         // zeit: 0;3;4;5;6
         mySQL.update("CREATE TABLE IF NOT EXISTS users (userid INT AUTO_INCREMENT" +
-            ", vorname VARCHAR(255), nachname VARCHAR(255), email VARCHAR(255), passwort VARCHAR(255), whatsapp VARCHAR(255)" +
-            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), modulname VARCHAR(255), zeit VARCHAR(255)" +
-            ", leveloeffentlich INT, studienganginfo VARCHAR(500), PRIMARY KEY(userid);");
+            ", prename VARCHAR(255), surname VARCHAR(255), email VARCHAR(255), password VARCHAR(255), whatsapp VARCHAR(255)" +
+            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), modulename VARCHAR(255), time VARCHAR(255)" +
+            ", levelpublic INT, moduleinfo VARCHAR(500), exptutor DOUBLE(4,12), explearning DOUBLE(4,12), leveltutor INT, levellearning INT, searching INT, PRIMARY KEY(userid));");
+
+        // type : 0 - brauche hilfe, type : 1 - biete hilfe
+        // done : 0 - false, done : 1 - true
+        mySQL.update("CREATE TABLE IF NOT EXISTS hwrequest (hwid INT AUTO_INCREMENT, modulename VARCHAR(255), title VARCHAR(255), type INT, done INT, PRIMARY KEY(hwid));");
+
+        mySQL.update("CREATE TABLE IF NOT EXISTS groups (groupid INT AUTO_INCREMENT, participants VARCHAR(255), PRIMARY KEY(groupid));");
 
         return mySQL;
     }
@@ -42,9 +50,31 @@ public class DBManager {
 
     public void addStudent(User user) {
 
-        mySQL.update("INSERT INTO users (vorname, nachname, email, passwort, whatsapp, discord, telegram, uni, modulname, zeit, leveloeffentlich, studenganginfo) VALUES " +
+        mySQL.update("INSERT INTO users (prename, surname, email, password, whatsapp, discord, telegram, uni, modulename, time, levelpublic, moduleinfo, exptutor, explearning, leveltutor, levellearning, searching) VALUES " +
             "('" + user.getPrename() + "', '" + user.getSurname() + "', '" + user.getEmail() + "', '" + user.getPassword() + "','" + user.getWhatsapp() + "' , '" + user.getDiscord() + "'," +
-            "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + user.getModuleInfo() + "');");
+            "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + user.getModuleInfo() + "'," +
+            "" + user.getExpTutor() + ", " + user.getExpLearning() + "," + user.getLevelTutor() + "," + user.getLevelLearning() + ", " + user.getSearching() + ");");
+    }
+
+    public void addHomework(Homework homework) {
+
+        mySQL.update("INSERT INTO hwrequest (modulename, title, type, done) VALUES ('" + homework.getModule() + "', '"
+            + homework.getTitle() + "', '" + homework.getType() + "', " + homework.getDone() + ");");
+    }
+
+    public void addGroup(Group group) {
+
+        mySQL.update("INSERT INTO groups (participants) VALUES ('" + group.getParticipants() + "');");
+    }
+
+    public void setHomeworkDone(int hwid) {
+
+        mySQL.update("UPDATE hwrequest SET done = 1 WHERE hwid = " + hwid + ";");
+    }
+
+    public void setSearchingDone(int userid) {
+
+        mySQL.update("UPDATE users SET searching = 1 WHERE userid = " + userid + ";");
     }
 
 }
