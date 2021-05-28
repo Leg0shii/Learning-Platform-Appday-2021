@@ -50,6 +50,16 @@ public class ProfileGUI extends GUI {
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
+            case 4,5 -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar2.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            default -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar3.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
         }
     }
 
