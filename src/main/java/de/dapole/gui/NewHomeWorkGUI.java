@@ -44,6 +44,7 @@ public class NewHomeWorkGUI extends GUI {
 
         String theme1 = themeTextField.getText();
         String exact1 = exactTextArea.getText();
+        User user = getGuiManager().getUserManager().getthisUser();
 
         if(!theme1.equals(this.theme) && !exact1.equals(exact)){
             hwc = new HomeworkClass(this.user, theme1, exact1);
