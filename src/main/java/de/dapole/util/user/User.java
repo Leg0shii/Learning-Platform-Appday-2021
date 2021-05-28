@@ -27,13 +27,17 @@ public class User {
     private int searching;
 
     private float expTutor;
-    private float levelTutor;
+    private int levelTutor;
     private float expLearning;
-    private float levelLearning;
+    private int levelLearning;
     private int trustworthy;
 
     private String moduleInfo;
     private String time;
     private int levelpublic;
+
+    public int getCumulatedLevel(){
+        return (levelLearning + levelLearning)/2;
+    }
 
 }
