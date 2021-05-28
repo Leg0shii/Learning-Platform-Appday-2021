@@ -73,6 +73,10 @@ public class ProfileGUI extends GUI {
     }
 
     private void setupListeners() {
+        backButton.addActionListener(e -> homefunction());
+    }
 
+    private void homefunction() {
+        getGuiManager().switchToOverviewGUI();
     }
 }
