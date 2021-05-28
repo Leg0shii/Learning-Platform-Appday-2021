@@ -111,10 +111,10 @@ public class LoginSignupGUI extends GUI {
         User user = getGuiManager().getUserManager().retrieveUser(email);
         // TODO: Switch to Overview
         if (user.getPassword().equals(password)) {
-
+            getGuiManager().switchToUebersichtGUI();
         } else {
             loginErrorLabel.setText("Falsche Anmeldedaten");
         }
-        getGuiManager().switchToUebersichtGUI();
+
     }
 }
