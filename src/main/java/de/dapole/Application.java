@@ -16,7 +16,16 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class Application {
-    public static void main(String[] args) {
+
+    private DBManager dbManager;
+    private AsyncMySQL mySQL;
+
+    private UserManager userManager;
+    private HomeworkManager homeworkManager;
+    private GroupManager groupManager;
+
+    public void onStart() {
+
         FlatArcIJTheme.setup();
         UIManager.put( "Button.arc", 999 );
         UIManager.put( "Component.arc", 999 );
@@ -27,12 +36,12 @@ public class Application {
         UIManager.put("Button.endBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor"));
         UIManager.put("Button.default.startBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor"));
 
-        DBManager dbManager = new DBManager();
-        AsyncMySQL mySQL = dbManager.initTables();
+        dbManager = new DBManager(userManager);
+        mySQL = dbManager.initTables();
 
-        UserManager userManager = new UserManager(mySQL);
-        HomeworkManager homeworkManager = new HomeworkManager(mySQL);
-        GroupManager groupManager = new GroupManager(mySQL);
+        userManager = new UserManager(mySQL);
+        homeworkManager = new HomeworkManager(mySQL);
+        groupManager = new GroupManager(mySQL);
 
         new GUIManager();
     }
