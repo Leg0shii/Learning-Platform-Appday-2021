@@ -48,6 +48,9 @@ public class NewHomeWorkGUI extends GUI {
         User user = getGuiManager().getThisUser();
 
         if(!theme1.equals(this.theme) && !exact1.equals(exact)){
+
+            //meinetwegen auch Homework, hier anpassung bitte
+
             hwc = new HomeworkClass(user, theme1, exact1);
             getGuiManager().getDbManager().addHomework(hwc);
             getGuiManager().switchToUebersichtGUI();
