@@ -23,6 +23,7 @@ public class GUIManager extends JFrame {
     private UniChooserGUI uniChooserGUI;
     private TimeChooserGUI timeChooserGUI;
     private QuestionGUI questionGUI;
+    private NewHomeWorkGUI newHomeWorkGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
     private final ModuleInfo moduleInfo;
@@ -100,4 +101,9 @@ public class GUIManager extends JFrame {
         this.revalidate();
     }
 
+    public void switchToNewHomeWorkGUI() {
+        newHomeWorkGUI = new NewHomeWorkGUI(this);
+        this.setContentPane(newHomeWorkGUI);
+        this.revalidate();
+    }
 }

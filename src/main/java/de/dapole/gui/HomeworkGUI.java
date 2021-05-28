@@ -12,6 +12,7 @@ public class HomeworkGUI extends GUI{
     private JButton sendHelpButton;
     private JButton getHelpButton;
     private JPanel mainPanel;
+    private JPanel subPanel;
 
     public HomeworkGUI(GUIManager guiManager) {
         super(guiManager);
@@ -31,7 +32,11 @@ public class HomeworkGUI extends GUI{
 
     private void setupListeners(){
         homeButton.addActionListener(e -> homefunction());
+        getHelpButton.addActionListener(e -> getHelpFunction());
+
     }
+
+    private void getHelpFunction() { getGuiManager().switchToNewHomeWorkGUI(); }
 
     private void homefunction() {
         getGuiManager().switchToUebersichtGUI();
