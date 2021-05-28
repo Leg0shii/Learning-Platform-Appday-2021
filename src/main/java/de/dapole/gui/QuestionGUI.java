@@ -21,6 +21,8 @@ public class QuestionGUI extends GUI{
         this.setLayout(new GridLayout(1, 1));
         add(mainPanel);
 
+        this.questions = guiManager.
+
         setupGUI();
         setupListeners();
     }

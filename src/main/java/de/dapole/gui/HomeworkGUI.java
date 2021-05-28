@@ -6,14 +6,14 @@ import org.kordamp.ikonli.swing.FontIcon;
 import javax.swing.*;
 import java.awt.*;
 
-public class Hausaufgaben extends GUI{
+public class HomeworkGUI extends GUI{
     private JButton homeButton;
     private JButton ownButton;
     private JButton sendHelpButton;
     private JButton getHelpButton;
     private JPanel mainPanel;
 
-    public Hausaufgaben(GUIManager guiManager) {
+    public HomeworkGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1,1));
         this.add(mainPanel);

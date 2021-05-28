@@ -16,7 +16,7 @@ public class GUIManager extends JFrame {
     private LoginSignupGUI loginSignupGUI;
     private PlatformChooserGUI platformChooserGUI;
     private PlatformSpecifierGUI platformSpecifierGUI;
-    private Hausaufgaben hausaufgabenGUI;
+    private HomeworkGUI hausaufgabenGUI;
     private OverviewGUI uebersichtGUI;
     private UniChooserGUI uniChooserGUI;
     private TimeChooserGUI timeChooserGUI;
@@ -59,7 +59,7 @@ public class GUIManager extends JFrame {
     }
 
     public void switchToHausaufgaben(){
-        hausaufgabenGUI = new Hausaufgaben(this);
+        hausaufgabenGUI = new HomeworkGUI(this);
         this.setContentPane(hausaufgabenGUI);
         this.revalidate();
     }
