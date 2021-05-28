@@ -23,13 +23,13 @@ public class DBManager {
 
         // modules
         // mathe1;mathe2;mathe3 ...
-        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniname)");
+        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniid INT, uniname VARCHAR(255), modulname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniid)");
 
         // mathe1:0;mathe2:1; ...
-        // zeit: 0;3;4;5;7
+        // zeit: 0;3;4;5;6
         mySQL.update("CREATE TABLE IF NOT EXISTS users (userid INT AUTO_INCREMENT" +
             ", vorname VARCHAR(255), nachname VARCHAR(255), email VARCHAR(255), passwort VARCHAR(255), whatsapp VARCHAR(255)" +
-            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), studiengang VARCHAR(255), zeit VARCHAR(255)" +
+            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), modulname VARCHAR(255), zeit VARCHAR(255)" +
             ", leveloeffentlich INT, studienganginfo VARCHAR(500), PRIMARY KEY(userid);");
 
         return mySQL;
@@ -42,7 +42,7 @@ public class DBManager {
 
     public void addStudent(User user) {
 
-        mySQL.update("INSERT INTO users (vorname, nachname, email, passwort, whatsapp, discord, telegram, uni, studiengang, zeit, leveloeffentlich, studenganginfo) VALUES " +
+        mySQL.update("INSERT INTO users (vorname, nachname, email, passwort, whatsapp, discord, telegram, uni, modulname, zeit, leveloeffentlich, studenganginfo) VALUES " +
             "('" + user.getPrename() + "', '" + user.getSurname() + "', '" + user.getEmail() + "', '" + user.getPassword() + "','" + user.getWhatsapp() + "' , '" + user.getDiscord() + "'," +
             "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + user.getModuleInfo() + "');");
     }
