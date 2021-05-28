@@ -26,6 +26,7 @@ public class GUIManager extends JFrame {
     private final DBManager dbManager;
     private final UserManager userManager;
     private final ModuleInfo moduleInfo;
+    User thisUser;
 
     public GUIManager (DBManager dbManager, UserManager userManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");
@@ -98,4 +99,5 @@ public class GUIManager extends JFrame {
         this.setContentPane(questionGUI);
         this.revalidate();
     }
+
 }
