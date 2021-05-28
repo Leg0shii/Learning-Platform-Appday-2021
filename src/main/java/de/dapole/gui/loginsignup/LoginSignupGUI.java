@@ -98,11 +98,19 @@ public class LoginSignupGUI extends GUI {
         TrustScore trustScore = new TrustScore();
 
         user.setSurname(surname);
-        if(trustScore.isFullname(surname)) user.setTrustworthy(user.getTrustworthy()+1);
+        if(trustScore.isFullname(surname) && trustScore.isFullname(firstname)) {
+            user.setTrustworthy(user.getTrustworthy()+2);
+        } else {
+            signupErrorLabel.setText("Bitte gib einen korrekten Namen an!");
+            return;
+        }
         user.setPrename(firstname);
-        if(trustScore.isFullname(firstname)) user.setTrustworthy(user.getTrustworthy()+1);
         user.setEmail(email);
-        if(trustScore.validate(email)) user.setTrustworthy(user.getTrustworthy()+1);
+        if(trustScore.validate(email)) {
+            user.setTrustworthy(user.getTrustworthy()+1);
+            signupErrorLabel.setText("Bitte gib eine korrekte Email an!");
+            return;
+        }
         user.setPassword(passwordOrigin);
 
         // TODO: Check if email already registered
