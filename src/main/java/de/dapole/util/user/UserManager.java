@@ -22,13 +22,13 @@ public class UserManager {
                 user.setPrename(resultSet.getString("prename"));
                 user.setSurname(resultSet.getString("surname"));
                 user.setEmail(resultSet.getString("email"));
-                user.setPassword(resultSet.getString("password"));
+                user.setPassword(resultSet.getString("upassword"));
                 user.setWhatsapp(resultSet.getString("whatsapp"));
                 user.setDiscord(resultSet.getString("discord"));
                 user.setTelegram(resultSet.getString("telegram"));
                 user.setUni(resultSet.getString("uni"));
                 user.setModule(resultSet.getString("modulename"));
-                user.setTime(resultSet.getString("time"));
+                user.setTime(resultSet.getString("utime"));
                 user.setLevelpublic(resultSet.getInt("levelpublic"));
                 user.setModuleInfo(resultSet.getString("moduleinfo"));
                 user.setExpTutor(resultSet.getFloat("exptutor"));

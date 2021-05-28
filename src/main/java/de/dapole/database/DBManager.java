@@ -25,14 +25,14 @@ public class DBManager {
 
         // modules
         // mathe1;mathe2;mathe3 ...
-        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniid INT, uniname VARCHAR(255), modulname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniid));");
+        mySQL.update("CREATE TABLE IF NOT EXISTS unidb (uniid INT AUTO_INCREMENT, uniname VARCHAR(255), modulname VARCHAR(255), modules VARCHAR(500), PRIMARY KEY(uniid));");
 
         // mathe1:0;mathe2:1; ...
         // zeit: 0;3;4;5;6
         mySQL.update("CREATE TABLE IF NOT EXISTS users (userid INT AUTO_INCREMENT" +
-            ", prename VARCHAR(255), surname VARCHAR(255), email VARCHAR(255), password VARCHAR(255), whatsapp VARCHAR(255)" +
-            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), modulename VARCHAR(255), time VARCHAR(255)" +
-            ", levelpublic INT, moduleinfo VARCHAR(500), exptutor DOUBLE(4,12), explearning DOUBLE(4,12), leveltutor INT, levellearning INT, searching INT, PRIMARY KEY(userid));");
+            ", prename VARCHAR(255), surname VARCHAR(255), email VARCHAR(255), upassword VARCHAR(255), whatsapp VARCHAR(255)" +
+            ", discord VARCHAR(255), telegram VARCHAR(255), uni VARCHAR(255), modulename VARCHAR(255), utime VARCHAR(255)" +
+            ", levelpublic INT, moduleinfo VARCHAR(255), exptutor DOUBLE(12,4), explearning DOUBLE(12,4), leveltutor INT, levellearning INT, searching INT, PRIMARY KEY(userid));");
 
         // type : 0 - brauche hilfe, type : 1 - biete hilfe
         // done : 0 - false, done : 1 - true
@@ -50,7 +50,7 @@ public class DBManager {
 
     public void addStudent(User user) {
 
-        mySQL.update("INSERT INTO users (prename, surname, email, password, whatsapp, discord, telegram, uni, modulename, time, levelpublic, moduleinfo, exptutor, explearning, leveltutor, levellearning, searching) VALUES " +
+        mySQL.update("INSERT INTO users (prename, surname, email, upassword, whatsapp, discord, telegram, uni, modulename, utime, levelpublic, moduleinfo, exptutor, explearning, leveltutor, levellearning, searching) VALUES " +
             "('" + user.getPrename() + "', '" + user.getSurname() + "', '" + user.getEmail() + "', '" + user.getPassword() + "','" + user.getWhatsapp() + "' , '" + user.getDiscord() + "'," +
             "'" + user.getTelegram() + "', '" + user.getUni() + "', '" + user.getModule() + "', '" + user.getTime() + "', " + user.getLevelpublic() + ", '" + user.getModuleInfo() + "'," +
             "" + user.getExpTutor() + ", " + user.getExpLearning() + "," + user.getLevelTutor() + "," + user.getLevelLearning() + ", " + user.getSearching() + ");");

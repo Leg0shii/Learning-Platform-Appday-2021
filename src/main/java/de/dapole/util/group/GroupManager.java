@@ -1,7 +1,6 @@
 package de.dapole.util.group;
 
 import de.dapole.database.AsyncMySQL;
-import de.dapole.util.homework.Homework;
 import lombok.RequiredArgsConstructor;
 
 import java.sql.ResultSet;
