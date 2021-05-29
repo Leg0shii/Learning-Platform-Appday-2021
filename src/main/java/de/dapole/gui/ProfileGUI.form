@@ -83,17 +83,19 @@
           </hspacer>
           <component id="f10f0" class="javax.swing.JLabel" binding="tutorLabel">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalAlignment value="0"/>
               <text value="Label"/>
             </properties>
           </component>
           <component id="c67bb" class="javax.swing.JLabel" binding="learningLabel">
             <constraints>
-              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <horizontalAlignment value="0"/>
               <text value="Label"/>
             </properties>
           </component>
