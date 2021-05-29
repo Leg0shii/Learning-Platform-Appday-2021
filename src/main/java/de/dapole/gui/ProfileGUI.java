@@ -30,7 +30,7 @@ public class ProfileGUI extends GUI {
         this.setLayout(new GridLayout(1, 1));
         add(mainPanel);
         this.user = getGuiManager().getThisUser();
-
+        user = getGuiManager().getUserManager().retrieveUser(user.getUserid());
         setupGUI();
         setupListeners();
     }
