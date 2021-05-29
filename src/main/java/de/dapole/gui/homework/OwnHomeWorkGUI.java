@@ -45,6 +45,7 @@ public class OwnHomeWorkGUI extends GUI {
     }
 
     public void updateGUI(){
+        this.homeworkBar.removeAll();
         this.user = getGuiManager().getThisUser();
         int userid = user.getUserid();
         ArrayList<Homework> hwl = getGuiManager().getHomeworkManager().getAllMyHomeworks(userid);

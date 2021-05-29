@@ -40,7 +40,7 @@ public class ProfileGUI extends GUI {
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.surnameLabel.setText(user.getSurname());
-        if (user.getTrustworthy() >= 6){
+        if (user.isTrustworthy()){
             this.surnameLabel.setText(this.surnameLabel.getText()+ " \u2713");
         }
         this.tutorLabel.setText("Tutor");
@@ -109,13 +109,13 @@ public class ProfileGUI extends GUI {
 
         this.tutorLevelPanel.setLayout(new GridLayout(1,1));
         this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / Leveling.calcNextLevelEXP(user.getLevelTutor()), user.getLevelTutor() );
+        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor(), user.getLevelTutor());
         this.tutorLevelPanel.add(d);
         this.tutorLevelPanel.repaint();
 
         this.learnLevelPanel.setLayout(new GridLayout(1,1));
         this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable e = new Drawable(17, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
+        Drawable e = new Drawable(17, 0, width - 2* 10,height - 2*10, user.getExpLearning(), user.getLevelLearning());
         this.learnLevelPanel.add(e);
         this.learnLevelPanel.repaint();
     }
