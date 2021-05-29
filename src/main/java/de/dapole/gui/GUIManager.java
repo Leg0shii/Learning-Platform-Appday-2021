@@ -28,6 +28,7 @@ public class GUIManager extends JFrame {
     private ProfileGUI profileGUI;
     private LeaderboardGUI leaderboardGUI;
     private NewHomeWorkGUI newHomeWorkGUI;
+    private OwnHomeWorkGUI ownHomeWorkGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
     private final HomeworkManager homeworkManager;
@@ -119,8 +120,8 @@ public class GUIManager extends JFrame {
     }
 
     public void switchToProfileGUI() {
-        profileGUI = new ProfileGUI(this);
         thisUser = getUserManager().retrieveUser(thisUser.getUserid());
+        profileGUI = new ProfileGUI(this);
         this.setContentPane(profileGUI);
         this.revalidate();
     }
@@ -133,5 +134,11 @@ public class GUIManager extends JFrame {
 
     public void switchToBrowseHelpGUI() {
 
+    }
+
+    public void switchToOwnHomeWorkGUI() {
+        ownHomeWorkGUI = new OwnHomeWorkGUI(this);
+        this.setContentPane(ownHomeWorkGUI);
+        this.revalidate();
     }
 }

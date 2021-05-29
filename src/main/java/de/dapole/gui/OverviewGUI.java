@@ -39,7 +39,12 @@ public class OverviewGUI extends GUI{
 
     private void expFunction() { ///give learning EXP to user
         getGuiManager().getUserManager().updateEXP(user.getUserid(), expSlider.getValue(), 1);
-        getGuiManager().switchToProfileGUI();
+        try {
+            wait(2);
+        }catch(Exception ignored){
+
+        }
+            getGuiManager().switchToProfileGUI();
          }
 
     private void leaderboardFunction() { getGuiManager().switchToLeaderboardGUI(getGuiManager().getTutorlearn()); }
@@ -56,7 +61,7 @@ public class OverviewGUI extends GUI{
         JMenu menu = new JMenu("Hilfegesuche");
         menu.add(new HomeworkGUI(getGuiManager()));
         this.homeworkButton.add(menu);
-        this.expLabel.setText("wie viele Stunden hast du gerlernt? (nicht betrügen und nicht doppelt klicken)");
+        this.expLabel.setText("wie viele Minuten hast du gelernt? (betrüg dich nicht selbst)");
         this.expSlider.setMinimum(10);
         this.expSlider.setMaximum(120);
         this.expSlider.setValue(60);

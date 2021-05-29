@@ -44,7 +44,7 @@ public class ProfileGUI extends GUI {
         this.backButton.setText("Zurück");
 
         int width = 100;
-        int height = 200;
+        int height = 220;
 
         this.tutorLevelPanel.setLayout(new GridLayout(1,1));
         this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
@@ -54,7 +54,7 @@ public class ProfileGUI extends GUI {
 
         this.learnLevelPanel.setLayout(new GridLayout(1,1));
         this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
+        Drawable e = new Drawable(17, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
         this.learnLevelPanel.add(e);
         this.learnLevelPanel.repaint();
 

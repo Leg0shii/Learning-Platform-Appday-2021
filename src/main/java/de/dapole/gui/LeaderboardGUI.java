@@ -53,7 +53,11 @@ public class LeaderboardGUI extends GUI{
         int i = 0;
         for(User u : leaderboard){
             try {
-                s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelTutor();
+                if(tutorlearn == 0){
+                    s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelTutor();
+                }else{
+                    s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelLearning();
+                }
             }catch(Exception e){
                 s = "irgendwas du loster boy";
             }
