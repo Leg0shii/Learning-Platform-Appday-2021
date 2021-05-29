@@ -46,12 +46,15 @@
               <toolTipText value=""/>
             </properties>
           </component>
-          <vspacer id="1a893">
+          <component id="6c0d9" class="javax.swing.JButton" binding="backButton">
             <constraints>
               <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
-          </vspacer>
-          <component id="48ed" class="javax.swing.JTextPane" binding="infoTextPane">
+            <properties>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="2e72a" class="javax.swing.JButton" binding="sendButton">
             <constraints>
               <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="50"/>
@@ -59,7 +62,7 @@
             </constraints>
             <properties>
               <editable value="false"/>
-              <text value="Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt."/>
+              <text value="Button"/>
             </properties>
           </component>
           <component id="6c0d9" class="javax.swing.JButton" binding="backButton">
@@ -75,7 +78,8 @@
               <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Button"/>
+              <editable value="false"/>
+              <text value="Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt."/>
             </properties>
           </component>
           <vspacer id="aeaa7">
