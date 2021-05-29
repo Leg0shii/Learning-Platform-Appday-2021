@@ -17,6 +17,7 @@ public class NewHomeWorkGUI extends GUI {
     private JButton sendButton;
     private JTextPane infoTextPane;
     private JPanel mainPanel;
+    private JButton backButton;
     String theme = "Thema?";
     String exact = "Was genau fehlt?";
     User user;
@@ -33,17 +34,26 @@ public class NewHomeWorkGUI extends GUI {
     private void setupGUI(){
 
         quoteLabel.setFont(getFont().deriveFont(Font.BOLD,14));
+
+
+        quoteLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         quoteLabel.setText("Jeder braucht mal Hilfe");
         exactTextArea.setText(exact);
         themeTextField.setText(theme);
-        infoTextPane.setText("Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt.");
+        infoTextPane.setText("Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt. Schreibe dein Thema und Anliegen möglichst minimal, aber dennoch detailliert hier auf.");
         sendButton.setText("Abschicken");
 
         this.user = getGuiManager().getThisUser();
+        backButton.setText("Zurück");
     }
 
     private void setupListeners(){
         sendButton.addActionListener(e -> sendfunction());
+        backButton.addActionListener(e -> backFunction());
+    }
+
+    private void backFunction() {
+        getGuiManager().switchToOverviewGUI();
     }
 
     private void sendfunction() {

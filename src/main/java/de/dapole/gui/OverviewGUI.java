@@ -4,6 +4,8 @@ import lombok.Getter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class OverviewGUI extends GUI{
     private JButton profileButton;
@@ -36,7 +38,6 @@ public class OverviewGUI extends GUI{
         this.profileButton.setText("Profil");
         this.leaderboardButton.setText("Leaderboard");
         JMenu menu = new JMenu("Hilfegesuche");
-        JMenuItem item = new JMenuItem();
         menu.add(new HomeworkGUI(getGuiManager()));
         this.homeworkButton.add(menu);
     }

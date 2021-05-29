@@ -33,6 +33,7 @@ public class HomeworkGUI extends GUI{
     }
 
     private void getHelpFunction() {
+        getParent().setVisible(false);
         getGuiManager().switchToNewHomeWorkGUI();
     }
 
