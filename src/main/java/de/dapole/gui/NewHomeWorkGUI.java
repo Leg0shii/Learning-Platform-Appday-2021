@@ -8,6 +8,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class NewHomeWorkGUI extends GUI {
+
+    int MAXHOMEWORK = 5;
+
     private JLabel quoteLabel;
     private JTextField themeTextField;
     private JTextArea exactTextArea;
@@ -16,6 +19,7 @@ public class NewHomeWorkGUI extends GUI {
     private JPanel mainPanel;
     String theme = "Thema?";
     String exact = "Was genau fehlt?";
+    User user;
 
     public NewHomeWorkGUI(GUIManager guiManager) {
         super(guiManager);
@@ -28,14 +32,14 @@ public class NewHomeWorkGUI extends GUI {
 
     private void setupGUI(){
 
-
-
         quoteLabel.setFont(getFont().deriveFont(Font.BOLD,14));
         quoteLabel.setText("Jeder braucht mal Hilfe");
         exactTextArea.setText(exact);
         themeTextField.setText(theme);
         infoTextPane.setText("Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt.");
         sendButton.setText("Abschicken");
+
+        this.user = getGuiManager().getThisUser();
     }
 
     private void setupListeners(){
@@ -44,14 +48,17 @@ public class NewHomeWorkGUI extends GUI {
 
     private void sendfunction() {
 
-        String theme1 = themeTextField.getText();
-        String exact1 = exactTextArea.getText();
-        User user = getGuiManager().getThisUser();
+        if(user.getSearching()<=MAXHOMEWORK){
+            String theme1 = themeTextField.getText();
+            String exact1 = exactTextArea.getText();
 
-        Homework homework = new Homework(user.getUserid(), new ArrayList<>(), theme1, exact1, 0, 0);
-        getGuiManager().getDbManager().addHomework(homework);
-
-        getGuiManager().switchToOverviewGUI();
+            if( !exact1.equals(exact) && !theme1.equals(theme) && theme1.length() >= 5 && exact1.length() >= 10){
+                Homework homework = new Homework(user.getUserid(), new ArrayList<>(), theme1, exact1, 0, 0);
+                getGuiManager().getDbManager().addHomework(homework);
+                user.setSearching(user.getSearching()+1);
+                getGuiManager().switchToOverviewGUI();
+            }
+        }
     }
 
 }
