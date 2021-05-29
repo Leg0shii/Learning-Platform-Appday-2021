@@ -47,7 +47,7 @@ public class LoginSignupGUI extends GUI {
         //jede GUI hat aehnlichen Konstruktor
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
 
         setupGUI();
         setupListeners();

@@ -24,7 +24,7 @@ public class BrowserHelpGUI extends GUI {
     public BrowserHelpGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1,1));
-        this.add(mainPanel);
+        add(mainPanel);
         filterCheckBoxes = new ArrayList<>();
         filterList = new ArrayList<>();
 

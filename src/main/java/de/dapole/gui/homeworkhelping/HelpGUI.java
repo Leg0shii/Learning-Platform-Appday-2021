@@ -17,7 +17,7 @@ public class HelpGUI extends GUI {
     public HelpGUI(GUIManager guiManager, Homework homework) {
         super(guiManager);
         this.setLayout(new GridLayout(1,1));
-        this.add(mainPanel);
+        add(mainPanel);
         this.homework = homework;
 
         setupGUI();

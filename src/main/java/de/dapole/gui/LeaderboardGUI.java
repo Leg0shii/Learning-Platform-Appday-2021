@@ -46,7 +46,7 @@ public class LeaderboardGUI extends GUI {
         this.headerLabel.setFont(getFont().deriveFont(Font.BOLD, 20));
         if (tutorlearn == 0) {
             this.headerLabel.setText("Tutor Leaderboard");
-        }else {
+        } else {
             this.headerLabel.setText("Learning Leaderboard");
         }
 

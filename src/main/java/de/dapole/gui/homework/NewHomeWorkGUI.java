@@ -27,7 +27,7 @@ public class NewHomeWorkGUI extends GUI {
     public NewHomeWorkGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1,1));
-        this.add(mainPanel);
+        add(mainPanel);
 
         setupGUI();
         setupListeners();
