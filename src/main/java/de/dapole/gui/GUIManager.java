@@ -3,6 +3,7 @@ package de.dapole.gui;
 import de.dapole.database.DBManager;
 import de.dapole.gui.loginsignup.*;
 import de.dapole.util.ModuleInfo;
+import de.dapole.util.homework.HomeworkManager;
 import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 import lombok.Getter;
@@ -28,15 +29,17 @@ public class GUIManager extends JFrame {
     private NewHomeWorkGUI newHomeWorkGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
+    private final HomeworkManager homeworkManager;
     private final ModuleInfo moduleInfo;
     User thisUser;
 
-    public GUIManager (DBManager dbManager, UserManager userManager, ModuleInfo moduleInfo){
+    public GUIManager (DBManager dbManager, UserManager userManager, HomeworkManager homeworkManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");
         this.setSize(500,500);
         this.setLocationRelativeTo(null);
         this.dbManager = dbManager;
         this.userManager = userManager;
+        this.homeworkManager = homeworkManager;
         this.moduleInfo = moduleInfo;
 
         URL iconURL = getClass().getResource("../../../DaPole.png");

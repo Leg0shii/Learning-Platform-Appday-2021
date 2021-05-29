@@ -23,6 +23,17 @@ public class HomeworkManager {
         return homeworkList;
     }
 
+    public ArrayList<Homework> getAllMyHomeworks(int userid) {
+
+        ArrayList<Homework> homeworkList = new ArrayList<>();
+        ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest where userid = " + userid + ";");
+        try {
+            while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return homeworkList;
+    }
+
     public Homework retrieveHomework(int hwid) {
 
         ResultSet resultSet = mySQL.query("SELECT * FROM hwrequest where hwid = " + hwid + ";");
