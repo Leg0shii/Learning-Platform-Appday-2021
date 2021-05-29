@@ -18,7 +18,7 @@ public class HomeworkGUI extends GUI {
     public HomeworkGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1,1));
-        this.add(mainPanel);
+        add(mainPanel);
 
         setupGUI();
         setupListeners();

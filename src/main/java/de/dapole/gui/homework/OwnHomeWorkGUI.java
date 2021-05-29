@@ -20,7 +20,7 @@ public class OwnHomeWorkGUI extends GUI {
     public OwnHomeWorkGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
 
         setupGUI();
         setupListeners();

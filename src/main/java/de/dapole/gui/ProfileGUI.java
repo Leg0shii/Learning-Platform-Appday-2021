@@ -27,7 +27,7 @@ public class ProfileGUI extends GUI {
     public ProfileGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
         this.user = getGuiManager().getThisUser();
         user = getGuiManager().getUserManager().retrieveUser(user.getUserid());
         setupGUI();

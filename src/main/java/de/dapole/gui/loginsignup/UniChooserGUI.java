@@ -22,7 +22,7 @@ public class UniChooserGUI extends GUI {
         super(guiManager);
         this.user = user;
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
 
         setupGUI();
         setupListeners();

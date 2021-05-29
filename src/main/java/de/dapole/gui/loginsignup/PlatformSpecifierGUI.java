@@ -30,7 +30,7 @@ public class PlatformSpecifierGUI extends GUI {
     public PlatformSpecifierGUI(GUIManager guiManager, ArrayList<String> platforms, User user) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
         this.user = user;
 
         setupGUI(platforms);

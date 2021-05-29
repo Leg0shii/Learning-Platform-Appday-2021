@@ -45,7 +45,7 @@ public class LoginSignupGUI extends GUI {
     public LoginSignupGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
 
         setupGUI();
         setupListeners();

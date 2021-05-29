@@ -21,7 +21,7 @@ public class OverviewGUI extends GUI{
     public OverviewGUI(GUIManager guiManager) {
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
 
         setupGUI();
         setupListeners();

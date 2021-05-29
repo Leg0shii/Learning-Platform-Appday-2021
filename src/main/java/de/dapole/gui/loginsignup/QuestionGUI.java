@@ -27,7 +27,7 @@ public class QuestionGUI extends GUI {
         super(guiManager);
         this.user = user;
         this.setLayout(new GridLayout(1, 1));
-        add(mainPanel);
+        this.add(mainPanel);
         this.answers = new ArrayList<>();
         this.modules = new ArrayList<>();
 
@@ -72,7 +72,7 @@ public class QuestionGUI extends GUI {
             user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
             Application.getApplication().user = user;
 
-            getGuiManager().switchToOverviewGUI();
+            getGuiManager().switchToNoticeGUI();
         }
     }
 
