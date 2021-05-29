@@ -19,6 +19,8 @@ public class ProfileGUI extends GUI {
     private JPanel avatarPanel;
     private JPanel tutorLevelPanel;
     private JPanel learnLevelPanel;
+    private JLabel tutorLabel;
+    private JLabel learningLabel;
     private User user;
     private BufferedImage image;
 
@@ -41,9 +43,9 @@ public class ProfileGUI extends GUI {
         if (user.getTrustworthy() >= 6){
             this.surnameLabel.setText(this.surnameLabel.getText()+ " \u2713");
         }
-        //this.tutorlvlLabel.setText("lvl " + user.getLevelTutor());
-        //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
-        this.backButton.setText("Zurück");
+        this.tutorLabel.setText("Tutor");
+        this.learningLabel.setText("Learning");
+        this.backButton.setText("Home");
 
 
         updateGUI();
