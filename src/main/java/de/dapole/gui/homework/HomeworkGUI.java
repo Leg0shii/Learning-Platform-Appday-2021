@@ -1,5 +1,7 @@
-package de.dapole.gui;
+package de.dapole.gui.homework;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.user.User;
 import org.kordamp.ikonli.carbonicons.CarbonIcons;
 import org.kordamp.ikonli.swing.FontIcon;
@@ -7,7 +9,7 @@ import org.kordamp.ikonli.swing.FontIcon;
 import javax.swing.*;
 import java.awt.*;
 
-public class HomeworkGUI extends GUI{
+public class HomeworkGUI extends GUI {
     private JButton ownButton;
     private JButton sendHelpButton;
     private JButton getHelpButton;
@@ -47,7 +49,7 @@ public class HomeworkGUI extends GUI{
 
     private void sendHelpFunction() {
         getParent().setVisible(false);
-        //getGuiManager().switchToBrowseHelpGUI();
+        getGuiManager().switchToBrowseHelpGUI();
     }
 
     private void getHelpFunction() {

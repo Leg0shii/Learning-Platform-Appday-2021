@@ -25,7 +25,6 @@ public class PlatformSpecifierGUI extends GUI {
     private JTextField telegramTextField;
     private JLabel whatsappLabel;
     private JLabel telegramLabel;
-    private JButton backButton;
     private final User user;
 
     public PlatformSpecifierGUI(GUIManager guiManager, ArrayList<String> platforms, User user) {
@@ -60,14 +59,12 @@ public class PlatformSpecifierGUI extends GUI {
             subPanel.remove(telegramTextField);
         }
         okayButton.setText("Okay");
-        backButton.setText("Zurück");
     }
 
     private void setupListeners() {
         okayButton.addActionListener(e -> {
             okayFunction();
         });
-        backButton.addActionListener(e -> backFunction());
     }
 
     private void backFunction() {

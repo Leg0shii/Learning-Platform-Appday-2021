@@ -1,15 +1,12 @@
 package de.dapole.gui;
 
+import de.dapole.gui.util.Drawable;
 import de.dapole.util.Leveling;
 import de.dapole.util.user.User;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
 
 public class ProfileGUI extends GUI {
@@ -22,6 +19,8 @@ public class ProfileGUI extends GUI {
     private JPanel avatarPanel;
     private JPanel tutorLevelPanel;
     private JPanel learnLevelPanel;
+    private JLabel tutorLabel;
+    private JLabel learningLabel;
     private User user;
     private BufferedImage image;
 
@@ -37,12 +36,18 @@ public class ProfileGUI extends GUI {
 
     private void setupGUI() {
         avatarPanel.setLayout(new GridLayout(1,1));
+        this.firstnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.firstnameLabel.setText(user.getPrename());
+        this.surnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.surnameLabel.setText(user.getSurname());
-        //this.tutorlvlLabel.setText("lvl " + user.getLevelTutor());
-        //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
+        if (user.getTrustworthy() >= 6){
+            this.surnameLabel.setText(this.surnameLabel.getText()+ " \u2713");
+        }
+        this.tutorLabel.setText("Tutor");
+        this.learningLabel.setText("Learning");
         this.backButton.setText("Home");
-
+        this.tutorLabel.setFont(getFont().deriveFont(Font.BOLD, 15));
+        this.learningLabel.setFont(getFont().deriveFont(Font.BOLD, 15));
 
         updateGUI();
     }
@@ -99,8 +104,6 @@ public class ProfileGUI extends GUI {
     }
 
     private void updateEXP(){
-        System.out.println(user.getExpLearning());
-
         int width = 100;
         int height = 220;
 

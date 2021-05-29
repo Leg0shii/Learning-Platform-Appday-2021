@@ -1,4 +1,4 @@
-package de.dapole.gui;
+package de.dapole.gui.util;
 
 import de.dapole.util.Leveling;
 import de.dapole.util.user.User;

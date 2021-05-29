@@ -19,7 +19,9 @@ public class HomeworkManager {
         ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest;");
         try {
             while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homeworkList;
     }
@@ -31,7 +33,9 @@ public class HomeworkManager {
         ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest where userid = " + userid + ";");
         try {
             while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homeworkList;
     }
@@ -43,8 +47,9 @@ public class HomeworkManager {
         Homework homework = new Homework();
 
         try {
-            if(resultSet.next()) {
+            if (resultSet.next()) {
 
+                homework.setHwid(Integer.parseInt(resultSet.getString("hwid")));
                 homework.setModule(resultSet.getString("modulename"));
                 homework.setTitle(resultSet.getString("title"));
                 homework.setType(resultSet.getInt("type"));
@@ -52,7 +57,9 @@ public class HomeworkManager {
                 homework.setUserid(resultSet.getInt("userid"));
                 homework.setHelperids(getHelperIds(resultSet.getString("helperids")));
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homework;
     }
@@ -60,13 +67,14 @@ public class HomeworkManager {
     //hilfsbereite Studierende extrahieren
     public ArrayList<Integer> getHelperIds(String helpers) {
 
-        if(!helpers.equals("")) {
-            String[] hs = helpers.split(";");
-            ArrayList<Integer> arrayList = new ArrayList<>();
-            for (String h : hs) arrayList.add(Integer.parseInt(h));
-            return arrayList;
+        String[] hs = helpers.split(";");
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        for (String h : hs) {
+            if (!h.equals("")) {
+                arrayList.add(Integer.parseInt(h));
+            }
         }
-        return new ArrayList<>();
+        return arrayList;
     }
 
 }

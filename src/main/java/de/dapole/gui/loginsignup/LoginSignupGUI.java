@@ -64,6 +64,7 @@ public class LoginSignupGUI extends GUI {
         tabPanel.addTab("Signup", signupIcon, signupPanel);
 
         loginButton.setFont(getFont().deriveFont(Font.BOLD));
+        signupButton.setFont(getFont().deriveFont(Font.BOLD));
 
         loginEmailLabel.setText("E-Mail");
         loginPasswordLabel.setText("Passwort");
@@ -74,7 +75,7 @@ public class LoginSignupGUI extends GUI {
         signupEmailLabel.setText("E-Mail");
         signupPasswordOriginLabel.setText("Passwort");
         signupPasswordCheckLabel.setText("<html> Passwort <br> wiederholen </html>");
-        signupButton.setText("Login");
+        signupButton.setText("Signup");
     }
 
     private void setupListeners() {

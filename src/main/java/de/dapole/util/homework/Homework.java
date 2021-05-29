@@ -12,7 +12,8 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Homework {
-    //Homeworkklasse, fuer die Hilfeanfragen von Studierenden
+
+    private int hwid;
     private int userid;
     private ArrayList<Integer> helperids;
     private String module;

@@ -31,12 +31,13 @@ public class GUIManager extends JFrame {
     private LeaderboardGUI leaderboardGUI;
     private NewHomeWorkGUI newHomeWorkGUI;
     private OwnHomeWorkGUI ownHomeWorkGUI;
+    private BrowserHelpGUI browserHelpGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
     private final HomeworkManager homeworkManager;
     private final ModuleInfo moduleInfo;
-    User thisUser;//der aufrufende User
-    int tutorlearn = 0;//Variable fuer den Typ des Leaderboards, 0 => tutor, 1 => learning
+    public User thisUser;
+    public int tutorlearn = 0;
 
     //this is where the magic happens. Window manager der das Umschalten zwischen verschiedenen Punkten ermoeglicht.
     public GUIManager (DBManager dbManager, UserManager userManager, HomeworkManager homeworkManager, ModuleInfo moduleInfo){
@@ -138,7 +139,9 @@ public class GUIManager extends JFrame {
     }
 
     public void switchToBrowseHelpGUI() {
-
+        browserHelpGUI = new BrowserHelpGUI(this);
+        this.setContentPane(browserHelpGUI);
+        this.revalidate();
     }
 
     public void switchToOwnHomeWorkGUI() {

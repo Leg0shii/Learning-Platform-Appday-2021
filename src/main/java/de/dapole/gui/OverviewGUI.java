@@ -1,14 +1,10 @@
 package de.dapole.gui;
 
+import de.dapole.gui.homework.HomeworkGUI;
 import de.dapole.util.user.User;
-import lombok.Getter;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class OverviewGUI extends GUI{
     private JButton profileButton;
@@ -52,20 +48,27 @@ public class OverviewGUI extends GUI{
     private void profileFunction() { getGuiManager().switchToProfileGUI();   }
 
     private void setupGUI() {
+        this.profileButton.putClientProperty("JButton.buttonType", "square");
+        this.leaderboardButton.putClientProperty("JButton.buttonType", "square");
+        this.homeworkButton.setLayout(new GridLayout(1,1));
         this.uebersichtLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         user = getGuiManager().getThisUser();
         String s = user.getPrename() + " " + user.getSurname();
         this.uebersichtLabel.setText("Übersicht von " + s);
+        if (user.getTrustworthy() >= 6){
+            this.uebersichtLabel.setText(this.uebersichtLabel.getText()+ " \u2713");
+        }
         this.profileButton.setText("Profil");
         this.leaderboardButton.setText("Leaderboard");
-        JMenu menu = new JMenu("Hilfegesuche");
+        JMenu menu = new JMenu("Hilfe");
+        menu.setHorizontalAlignment(SwingConstants.CENTER);
         menu.add(new HomeworkGUI(getGuiManager()));
         this.homeworkButton.add(menu);
-        this.expLabel.setText("wie viele Minuten hast du gelernt? (betrüg dich nicht selbst)");
+        this.expLabel.setText("<html> Wie viele Minuten hast du gelernt?<br>(betrüge dich nicht selbst)</html>");
         this.expSlider.setMinimum(10);
         this.expSlider.setMaximum(120);
         this.expSlider.setValue(60);
-        expSlider.addChangeListener(e -> expButton.setText("Adde " + ((JSlider)e.getSource()).getValue() + " Minuten zu deiner Learnminuten Balance"));
+        expSlider.addChangeListener(e -> expButton.setText("<html>Adde " + ((JSlider)e.getSource()).getValue() + " Minuten <br>zu deiner Learnminuten Balance</html>"));
         this.expButton.setText("Adde " + expSlider.getValue() + " Minuten zu deiner Learnminuten Balance");
 
     }

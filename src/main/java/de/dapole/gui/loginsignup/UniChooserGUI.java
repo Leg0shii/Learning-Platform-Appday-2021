@@ -16,7 +16,6 @@ public class UniChooserGUI extends GUI {
     private JLabel collegeLabel;
     private JLabel moduleLabel;
     private JPanel subPanel;
-    private JButton backButton;
     private final User user;
 
     public UniChooserGUI(GUIManager guiManager, User user) {
@@ -35,12 +34,10 @@ public class UniChooserGUI extends GUI {
         moduleLabel.setText("Wähle deinen Studiengang aus");
         moduleComboBox.addItem("Informatik");
         okayButton.setText("Okay");
-        backButton.setText("Zurück");
     }
 
     private void setupListeners() {
         okayButton.addActionListener(e -> okayFunction());
-        backButton.addActionListener(e -> backFunction());
     }
 
     private void backFunction() {
