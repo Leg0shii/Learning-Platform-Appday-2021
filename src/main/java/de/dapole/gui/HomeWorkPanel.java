@@ -8,7 +8,7 @@ public class HomeWorkPanel {
     private JButton showButton;
     private JPanel mainPanel;
 
-    HomeWorkPanel(Homework hw, int size){
+    public HomeWorkPanel(Homework hw){
 
     }
 }
