@@ -50,7 +50,7 @@ public class Application {
         groupManager = new GroupManager(mySQL);
         moduleInfo = new ModuleInfo(mySQL);
 
-        new GUIManager(dbManager, userManager, moduleInfo);
+        new GUIManager(dbManager, userManager, homeworkManager, moduleInfo);
     }
 
     public static Application getApplication() {

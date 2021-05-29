@@ -1,5 +1,6 @@
 package de.dapole.gui;
 
+import de.dapole.util.user.User;
 import org.kordamp.ikonli.carbonicons.CarbonIcons;
 import org.kordamp.ikonli.swing.FontIcon;
 
@@ -22,7 +23,12 @@ public class HomeworkGUI extends GUI{
     }
 
     private void setupGUI(){
-        ownButton.setText("eigene Hilfegesuche");
+        User user = getGuiManager().getThisUser();
+        if(user.getSearching()<=0){
+            ownButton.setText("eigene Hilfegesuche");
+            ownButton.setVisible(false);
+        }
+
         sendHelpButton.setText("Jemandem helfen");
         getHelpButton.setText("Hilfe bekommen");
     }
