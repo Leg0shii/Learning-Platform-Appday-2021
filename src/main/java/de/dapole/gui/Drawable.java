@@ -1,5 +1,8 @@
 package de.dapole.gui;
 
+import de.dapole.util.Leveling;
+import de.dapole.util.user.User;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,14 +13,16 @@ public class Drawable extends JPanel {
     int width;
     int height;
     double filled;
+    double exp;
     int lvl;
 
-    public Drawable(int x, int y, int width, int height, double filled, int lvl){
+    public Drawable(int x, int y, int width, int height, double exp, int lvl){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.filled = filled;
+        this.exp = exp;
+        this.filled = exp / Leveling.calcNextLevelEXP(lvl);
         this.lvl = lvl;
     }
 
@@ -28,7 +33,7 @@ public class Drawable extends JPanel {
         g2d.setColor(Color.BLACK);
         g2d.drawRect(x, y, width, height);
         g2d.setColor(Color.GREEN);
-        g2d.fillRect(x+1, y +height - (int) (filled * 200), width-1, (int) (filled * 200));
+        g2d.fillRect(x+1, y +height - (int) (filled * 200), width-1, (int) (filled * 200) - 1);
 
         //trying outline
         g2d.setPaint(Color.black);
@@ -36,6 +41,13 @@ public class Drawable extends JPanel {
         String s1 = "lvl " + this.lvl;
         FontMetrics fm1 = g2d.getFontMetrics();
         g2d.drawString(s1, x + (width - fm1.stringWidth(s1)) / 2, y+height+fm1.getHeight());
+
+        //
+        g2d.setPaint(Color.black);
+        g2d.setFont(new Font("Serif", Font.BOLD, 10));
+        String s2 = this.exp + " / " + Leveling.calcNextLevelEXP(this.lvl);
+        FontMetrics fm2 = g2d.getFontMetrics();
+        g2d.drawString(s2, x + (width - fm2.stringWidth(s2)) / 2, y+height+fm1.getHeight()+fm2.getHeight());
 
         //normal
         g2d.setPaint(Color.orange);
