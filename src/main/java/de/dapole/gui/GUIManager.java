@@ -29,6 +29,7 @@ public class GUIManager extends JFrame {
     private LeaderboardGUI leaderboardGUI;
     private NewHomeWorkGUI newHomeWorkGUI;
     private OwnHomeWorkGUI ownHomeWorkGUI;
+    private BrowserHelpGUI browserHelpGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
     private final HomeworkManager homeworkManager;
@@ -133,7 +134,9 @@ public class GUIManager extends JFrame {
     }
 
     public void switchToBrowseHelpGUI() {
-
+        browserHelpGUI = new BrowserHelpGUI(this);
+        this.setContentPane(browserHelpGUI);
+        this.revalidate();
     }
 
     public void switchToOwnHomeWorkGUI() {

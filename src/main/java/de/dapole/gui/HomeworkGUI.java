@@ -47,7 +47,7 @@ public class HomeworkGUI extends GUI{
 
     private void sendHelpFunction() {
         getParent().setVisible(false);
-        //getGuiManager().switchToBrowseHelpGUI();
+        getGuiManager().switchToBrowseHelpGUI();
     }
 
     private void getHelpFunction() {

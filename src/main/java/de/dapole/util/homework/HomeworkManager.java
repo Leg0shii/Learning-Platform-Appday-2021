@@ -18,7 +18,9 @@ public class HomeworkManager {
         ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest;");
         try {
             while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homeworkList;
     }
@@ -29,7 +31,9 @@ public class HomeworkManager {
         ResultSet resultSet = mySQL.query("SELECT hwid FROM hwrequest where userid = " + userid + ";");
         try {
             while (resultSet.next()) homeworkList.add(retrieveHomework(resultSet.getInt("hwid")));
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homeworkList;
     }
@@ -40,7 +44,7 @@ public class HomeworkManager {
         Homework homework = new Homework();
 
         try {
-            if(resultSet.next()) {
+            if (resultSet.next()) {
 
                 homework.setModule(resultSet.getString("modulename"));
                 homework.setTitle(resultSet.getString("title"));
@@ -49,7 +53,9 @@ public class HomeworkManager {
                 homework.setUserid(resultSet.getInt("userid"));
                 homework.setHelperids(getHelperIds(resultSet.getString("helperids")));
             }
-        } catch (SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return homework;
     }
@@ -58,7 +64,11 @@ public class HomeworkManager {
 
         String[] hs = helpers.split(";");
         ArrayList<Integer> arrayList = new ArrayList<>();
-        for(String h : hs) arrayList.add(Integer.parseInt(h));
+        for (String h : hs) {
+            if (!h.equals("")) {
+                arrayList.add(Integer.parseInt(h));
+            }
+        }
         return arrayList;
     }
 
