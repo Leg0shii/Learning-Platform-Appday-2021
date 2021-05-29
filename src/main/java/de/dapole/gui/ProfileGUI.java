@@ -37,8 +37,13 @@ public class ProfileGUI extends GUI {
 
     private void setupGUI() {
         avatarPanel.setLayout(new GridLayout(1,1));
+        this.firstnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.firstnameLabel.setText(user.getPrename());
+        this.surnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.surnameLabel.setText(user.getSurname());
+        if (user.getTrustworthy() >= 6){
+            this.surnameLabel.setText(this.surnameLabel.getText()+ " \u2713");
+        }
         //this.tutorlvlLabel.setText("lvl " + user.getLevelTutor());
         //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
         this.backButton.setText("Zurück");
@@ -99,8 +104,6 @@ public class ProfileGUI extends GUI {
     }
 
     private void updateEXP(){
-        System.out.println(user.getExpLearning());
-
         int width = 100;
         int height = 220;
 

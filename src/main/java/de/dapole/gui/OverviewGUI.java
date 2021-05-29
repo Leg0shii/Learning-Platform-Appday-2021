@@ -56,6 +56,9 @@ public class OverviewGUI extends GUI{
         user = getGuiManager().getThisUser();
         String s = user.getPrename() + " " + user.getSurname();
         this.uebersichtLabel.setText("Übersicht von " + s);
+        if (user.getTrustworthy() >= 6){
+            this.uebersichtLabel.setText(this.uebersichtLabel.getText()+ " \u2713");
+        }
         this.profileButton.setText("Profil");
         this.leaderboardButton.setText("Leaderboard");
         JMenu menu = new JMenu("Hilfegesuche");

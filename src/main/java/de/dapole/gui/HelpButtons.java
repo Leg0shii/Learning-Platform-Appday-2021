@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 @Getter
@@ -16,30 +17,23 @@ public class HelpButtons extends JMenuBar {
     public HelpButtons(GUIManager guiManager, ArrayList<String> filter) {
         this.guiManager = guiManager;
         this.filter = filter;
-        this.setLayout(new SpringLayout());
+        this.setLayout(new GridLayout(-1,1));
 
         setupGUI();
     }
 
     private void setupGUI() {
-        int counter = 0;
         for (Homework homework : getGuiManager().getHomeworkManager().getAllHomeworks()) {
             if (filter.contains(homework.getModule())) {
-                JMenu menu = new JMenu("<html>Bereich: " + homework.getModule() + "<br> Genau: "+homework.getTitle().substring(0,15)+"...</html>");
+                JMenu menu = new JMenu("<html>Von: " + getGuiManager().getUserManager().retrieveUser(homework.getUserid()).getPrename() + " " + getGuiManager().getUserManager().retrieveUser(homework.getUserid()).getSurname() + "<br>Bereich: " + homework.getModule() + "<br> Genau: " + homework.getTitle().substring(0, 15) + "...</html>");
                 menu.add(new HelpGUI(guiManager, homework));
+                this.add(new JSeparator());
+                if (homework.getHelperids().contains(getGuiManager().thisUser.getUserid())) {
+                    menu.setBackground(menu.getBackground().darker());
+                }
                 this.add(menu);
-                counter++;
             }
         }
-        if ((counter%3 == 1)){
-            this.add(new JLabel(""));
-            counter++;
-        }
-        if (counter%3 == 2){
-            this.add(new JLabel(""));
-            this.add(new JLabel(""));
-            counter+=2;
-        }
-        SpringUtilities.makeCompactGrid(this,3,counter/3,5,5,5,5);
+        this.add(new JSeparator());
     }
 }

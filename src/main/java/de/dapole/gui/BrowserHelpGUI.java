@@ -1,17 +1,22 @@
 package de.dapole.gui;
 
 import de.dapole.util.homework.Homework;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.swing.*;
 import javax.swing.plaf.basic.DefaultMenuLayout;
 import java.awt.*;
 import java.util.ArrayList;
 
+@Getter
+@Setter
 public class BrowserHelpGUI extends GUI{
     private JTabbedPane tabPanel;
     private JPanel mainPanel;
     private JPanel filterPanel;
-    private JPanel helpPanel;
+    private JScrollPane helpPanel;
+    private JButton backButton;
     private ArrayList<String> filterList;
     private ArrayList<JCheckBox> filterCheckBoxes;
 
@@ -31,20 +36,31 @@ public class BrowserHelpGUI extends GUI{
             updateFilter();
             updateHelpButtons();
         });
+        backButton.addActionListener(e -> {
+            backFunction();
+        });
+    }
+
+    private void backFunction() {
+        getGuiManager().switchToOverviewGUI();
     }
 
     private void setupGUI() {
         filterPanel.setLayout(new SpringLayout());
-        helpPanel.setLayout(new GridLayout(1,1));
         updateGUI();
         updateFilter();
         addFilterCheckBoxes();
-        updateHelpButtons();
+        backButton.setText("Zurück");
     }
 
     private void updateHelpButtons() {
-        helpPanel.removeAll();
-        helpPanel.add(new HelpButtons(getGuiManager(), filterList));
+        //helpPanel.getViewport().removeAll();
+        JPanel panel = new JPanel();
+        HelpButtons buttons = new HelpButtons(getGuiManager(), filterList);
+        panel.add(buttons);
+        helpPanel.setViewportView(panel);
+        helpPanel.revalidate();
+        //view.add(panel);
     }
 
     private void updateGUI(){
@@ -82,6 +98,6 @@ public class BrowserHelpGUI extends GUI{
             filterPanel.add(new JLabel(""));
             counter++;
         }
-        SpringUtilities.makeCompactGrid(filterPanel,3,counter/3,5,5,5,5);
+        SpringUtilities.makeCompactGrid(filterPanel,counter/3,3,5,5,5,5);
     }
 }
