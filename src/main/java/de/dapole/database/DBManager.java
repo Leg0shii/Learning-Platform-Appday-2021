@@ -120,5 +120,19 @@ public class DBManager {
         return query;
     }
 
+    public void addHelper(int hwid, int helperid) {
+
+        ResultSet resultSet = mySQL.query("SELECT helperids FROM hwrequest WHERE hwid = " + hwid + ";");
+        String update = "";
+        try {
+            if (resultSet.next()) {
+                update = resultSet.getString("helperids") + helperid + ";";
+                mySQL.update("UPDATE hwrequest SET helperids = '" + update + "';");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 

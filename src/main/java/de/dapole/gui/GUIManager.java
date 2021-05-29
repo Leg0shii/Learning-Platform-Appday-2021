@@ -38,8 +38,8 @@ public class GUIManager extends JFrame {
     private final UserManager userManager;
     private final HomeworkManager homeworkManager;
     private final ModuleInfo moduleInfo;
-    User thisUser;
-    int tutorlearn = 0;
+    public User thisUser;
+    public int tutorlearn = 0;
 
     public GUIManager (DBManager dbManager, UserManager userManager, HomeworkManager homeworkManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");

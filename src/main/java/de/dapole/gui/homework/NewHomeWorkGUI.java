@@ -74,8 +74,7 @@ public class NewHomeWorkGUI extends GUI {
             if( !exact1.equals(exact) && !theme1.equals(theme) && theme1.length() >= 5 && exact1.length() >= 15){
                 Homework homework = new Homework(-1,user.getUserid(), new ArrayList<>(), theme1, exact1, 0, 0);
                 getGuiManager().getDbManager().addHomework(homework);
-                user.setSearching(user.getSearching()+1);
-                getGuiManager().getDbManager().addStudent(user);
+                getGuiManager().getDbManager().setSearchingDone(user.getUserid());
                 getGuiManager().switchToOverviewGUI();
             } else {
                 JOptionPane.showMessageDialog(this, "!! Too short !!");

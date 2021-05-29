@@ -34,8 +34,7 @@ public class HelpGUI extends GUI {
     }
 
     private void confirmFunction() {
-        homework.getHelperids().add(getGuiManager().thisUser.getUserid());
-        getGuiManager().getDbManager().addHomework(homework);
+        getGuiManager().getDbManager().addHelper(homework.getHwid(), getGuiManager().getThisUser().getUserid());
         getParent().setVisible(false);
     }
 

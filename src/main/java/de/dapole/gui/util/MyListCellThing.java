@@ -14,8 +14,8 @@ public class MyListCellThing extends JLabel implements ListCellRenderer {
         setText(value.toString());
 
         // based on the index you set the color.  This produces the every other effect.
-        if (index % 2 == 0) setBackground(Color.RED);
-        else setBackground(Color.BLUE);
+        if (index % 2 == 0) setBackground(UIManager.getColor("text"));
+        else setBackground(UIManager.getColor("text").darker());
 
         return this;
     }
