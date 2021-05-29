@@ -26,6 +26,7 @@ public class GUIManager extends JFrame {
     private TimeChooserGUI timeChooserGUI;
     private QuestionGUI questionGUI;
     private ProfileGUI profileGUI;
+    private LeaderboardGUI leaderboardGUI;
     private NewHomeWorkGUI newHomeWorkGUI;
     private final DBManager dbManager;
     private final UserManager userManager;
@@ -119,6 +120,12 @@ public class GUIManager extends JFrame {
     public void switchToProfileGUI() {
         profileGUI = new ProfileGUI(this);
         this.setContentPane(profileGUI);
+        this.revalidate();
+    }
+
+    public void switchToLeaderboardGUI() {
+        leaderboardGUI = new LeaderboardGUI(this);
+        this.setContentPane(leaderboardGUI);
         this.revalidate();
     }
 }

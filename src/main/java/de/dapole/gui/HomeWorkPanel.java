@@ -11,6 +11,4 @@ public class HomeWorkPanel {
     HomeWorkPanel(Homework hw, int size){
 
     }
-
-
 }

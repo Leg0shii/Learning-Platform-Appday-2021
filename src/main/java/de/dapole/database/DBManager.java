@@ -6,16 +6,17 @@ import de.dapole.util.homework.Homework;
 import de.dapole.util.user.User;
 import de.dapole.util.user.UserManager;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+@Setter
 @RequiredArgsConstructor
 public class DBManager {
 
-    private final UserManager userManager;
     private AsyncMySQL mySQL;
+    private UserManager usermg;
 
     private void connectToDB() {
 
@@ -97,13 +98,13 @@ public class DBManager {
         User[] leaderboard = new User[10];
         ResultSet resultSet;
 
-        if (type == 0) resultSet = mySQL.query("SELECT email FROM users ORDER BY leveltutor ASC;");
-        else resultSet = mySQL.query("SELECT email FROM users ORDER BY levellearning ASC;");
+        if (type == 0) resultSet = mySQL.query("SELECT email FROM users ORDER BY leveltutor DESC;");
+        else resultSet = mySQL.query("SELECT email FROM users ORDER BY levellearning DESC;");
 
         int count = 0;
         try {
             while (resultSet.next() && count < 10) {
-                leaderboard[count] = userManager.retrieveUser(resultSet.getInt("userid"));
+                leaderboard[count] = usermg.retrieveUser(usermg.getIDFromEmail(resultSet.getString("email")));
                 count++;
             }
         } catch (SQLException e) {

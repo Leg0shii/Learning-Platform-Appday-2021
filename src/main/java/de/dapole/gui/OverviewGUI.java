@@ -26,11 +26,12 @@ public class OverviewGUI extends GUI{
 
     private void setupListeners() {
         profileButton.addActionListener(e -> profileFunction());
+        leaderboardButton.addActionListener(e -> leaderboardFunction());
     }
 
-    private void profileFunction() {
-        getGuiManager().switchToProfileGUI();
-    }
+    private void leaderboardFunction() { getGuiManager().switchToLeaderboardGUI(); }
+
+    private void profileFunction() { getGuiManager().switchToProfileGUI();   }
 
     private void setupGUI() {
         this.uebersichtLabel.setFont(getFont().deriveFont(Font.BOLD,20));

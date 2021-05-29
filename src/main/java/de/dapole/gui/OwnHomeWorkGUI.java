@@ -36,8 +36,9 @@ public class OwnHomeWorkGUI extends GUI{
         int userid = user.getUserid();
         ArrayList<Homework> hwl = getGuiManager().getHomeworkManager().getAllMyHomeworks(userid);
 
+
         for( Homework hw : hwl){
-            ownHomeWorksPanel.add(new HomeworkPanel(hw));
+           // ownHomeWorksPanel.add(new HomeworkPanel(hw));
         }
 
 

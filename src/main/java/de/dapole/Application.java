@@ -42,13 +42,14 @@ public class Application {
         UIManager.put("MenuBar.background", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter().brighter());
         UIManager.put("MenuBar.hoverBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter());
 
-        dbManager = new DBManager(userManager);
+        dbManager = new DBManager();
         mySQL = dbManager.initTables();
 
         userManager = new UserManager(mySQL);
         homeworkManager = new HomeworkManager(mySQL);
         groupManager = new GroupManager(mySQL);
         moduleInfo = new ModuleInfo(mySQL);
+        dbManager.setUsermg(userManager);
 
         new GUIManager(dbManager, userManager, homeworkManager, moduleInfo);
     }
