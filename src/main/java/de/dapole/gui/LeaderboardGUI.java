@@ -63,7 +63,7 @@ public class LeaderboardGUI extends GUI {
             for (User u : leaderboard) {
                 try {
                     s = u.getPrename() + " " + u.getSurname();
-                    if (u.getTrustworthy() >= 6) {
+                    if (u.isTrustworthy()) {
                         s += " \u2713";
                     }
                     s += "  ";

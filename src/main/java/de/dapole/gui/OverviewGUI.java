@@ -55,7 +55,7 @@ public class OverviewGUI extends GUI{
         user = getGuiManager().getThisUser();
         String s = user.getPrename() + " " + user.getSurname();
         this.uebersichtLabel.setText("Übersicht von " + s);
-        if (user.getTrustworthy() >= 6){
+        if (user.isTrustworthy()){
             this.uebersichtLabel.setText(this.uebersichtLabel.getText()+ " \u2713");
         }
         this.profileButton.setText("Profil");
@@ -66,10 +66,10 @@ public class OverviewGUI extends GUI{
         this.homeworkButton.add(menu);
         this.expLabel.setText("<html> Wie viele Minuten hast du gelernt?<br>(betrüge dich nicht selbst)</html>");
         this.expSlider.setMinimum(10);
-        this.expSlider.setMaximum(120);
-        this.expSlider.setValue(60);
+        this.expSlider.setMaximum(60);
+        this.expSlider.setValue(20);
         expSlider.addChangeListener(e -> expButton.setText("<html>Adde " + ((JSlider)e.getSource()).getValue() + " Minuten <br>zu deiner Learnminuten Balance</html>"));
-        this.expButton.setText("Adde " + expSlider.getValue() + " Minuten zu deiner Learnminuten Balance");
+        this.expButton.setText("<html>Adde " + expSlider.getValue() + " Minuten <br>zu deiner Learnminuten Balance</html>");
 
     }
 }

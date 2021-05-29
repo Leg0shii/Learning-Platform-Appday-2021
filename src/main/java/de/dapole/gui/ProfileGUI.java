@@ -40,7 +40,7 @@ public class ProfileGUI extends GUI {
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         this.surnameLabel.setText(user.getSurname());
-        if (user.getTrustworthy() >= 6){
+        if (user.isTrustworthy()){
             this.surnameLabel.setText(this.surnameLabel.getText()+ " \u2713");
         }
         this.tutorLabel.setText("Tutor");

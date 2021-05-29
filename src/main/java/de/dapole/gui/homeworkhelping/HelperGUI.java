@@ -59,7 +59,6 @@ public class HelperGUI extends GUI {
                 } catch (Exception ignored) {
                 }
                 if (rating > -1 && rating < 11) {
-                    System.out.println("hello");
                     getGuiManager().getUserManager().updateEXP(user.getUserid(), Leveling.pointsToEXP(rating), 0);
                     getGuiManager().getDbManager().setHomeworkDone(hw.getHwid());
                     getGuiManager().getOwnHomeWorkGUI().updateGUI();
