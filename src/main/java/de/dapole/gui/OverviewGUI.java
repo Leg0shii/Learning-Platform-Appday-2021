@@ -48,6 +48,7 @@ public class OverviewGUI extends GUI{
     private void profileFunction() { getGuiManager().switchToProfileGUI();   }
 
     private void setupGUI() {
+        this.homeworkButton.setLayout(new GridLayout(1,1));
         this.uebersichtLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         user = getGuiManager().getThisUser();
         String s = user.getPrename() + " " + user.getSurname();
@@ -57,10 +58,11 @@ public class OverviewGUI extends GUI{
         }
         this.profileButton.setText("Profil");
         this.leaderboardButton.setText("Leaderboard");
-        JMenu menu = new JMenu("Hilfegesuche");
+        JMenu menu = new JMenu("Hilfe");
+        menu.setHorizontalAlignment(SwingConstants.CENTER);
         menu.add(new HomeworkGUI(getGuiManager()));
         this.homeworkButton.add(menu);
-        this.expLabel.setText("wie viele Minuten hast du gelernt? (betrüg dich nicht selbst)");
+        this.expLabel.setText("<html> Wie viele Minuten hast du gelernt?<br>(betrüge dich nicht selbst)</html>");
         this.expSlider.setMinimum(10);
         this.expSlider.setMaximum(120);
         this.expSlider.setValue(60);
