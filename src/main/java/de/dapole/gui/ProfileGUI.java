@@ -41,7 +41,7 @@ public class ProfileGUI extends GUI {
         this.surnameLabel.setText(user.getSurname());
         //this.tutorlvlLabel.setText("lvl " + user.getLevelTutor());
         //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
-        this.backButton.setText("Zurück");
+        this.backButton.setText("Home");
 
 
         updateGUI();

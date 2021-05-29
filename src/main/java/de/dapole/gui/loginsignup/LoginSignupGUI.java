@@ -42,7 +42,9 @@ public class LoginSignupGUI extends GUI {
     private JLabel signupErrorLabel;
     private JLabel loginErrorLabel;
 
+
     public LoginSignupGUI(GUIManager guiManager) {
+        //jede GUI hat aehnlichen Konstruktor
         super(guiManager);
         this.setLayout(new GridLayout(1, 1));
         add(mainPanel);

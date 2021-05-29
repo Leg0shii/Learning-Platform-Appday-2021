@@ -45,7 +45,7 @@ public class NewHomeWorkGUI extends GUI {
         sendButton.setText("Abschicken");
 
         this.user = getGuiManager().getThisUser();
-        backButton.setText("Zurück");
+        backButton.setText("Home");
     }
 
     private void setupListeners(){
