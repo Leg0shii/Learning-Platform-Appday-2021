@@ -12,12 +12,12 @@ public class NewHomeWorkGUI extends GUI {
     int MAXHOMEWORK = 5;
 
     private JLabel quoteLabel;
-    private JTextField themeTextField;
     private JTextArea exactTextArea;
     private JButton sendButton;
     private JTextPane infoTextPane;
     private JPanel mainPanel;
     private JButton backButton;
+    private JComboBox<String> themeComboBox;
     String theme = "Thema?";
     String exact = "Was genau fehlt?";
     User user;
@@ -35,11 +35,12 @@ public class NewHomeWorkGUI extends GUI {
 
         quoteLabel.setFont(getFont().deriveFont(Font.BOLD,14));
 
+        themeComboBox.addItem(theme);
+        initComboBox();
 
         quoteLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         quoteLabel.setText("Jeder braucht mal Hilfe");
         exactTextArea.setText(exact);
-        themeTextField.setText(theme);
         infoTextPane.setText("Du kannst 5 Hilfegesuche gleichzeitig stellen. Hilfegesuche werden nach 5 Tagen automatisch entfernt. Schreibe dein Thema und Anliegen möglichst minimal, aber dennoch detailliert hier auf.");
         sendButton.setText("Abschicken");
 
@@ -52,6 +53,12 @@ public class NewHomeWorkGUI extends GUI {
         backButton.addActionListener(e -> backFunction());
     }
 
+    private void initComboBox(){
+        for (String theme : getGuiManager().getModuleInfo().getQuestions(getGuiManager().getThisUser().getModule())){
+            themeComboBox.addItem(theme);
+        }
+    }
+
     private void backFunction() {
         getGuiManager().switchToOverviewGUI();
     }
@@ -59,14 +66,17 @@ public class NewHomeWorkGUI extends GUI {
     private void sendfunction() {
 
         if(user.getSearching()<=MAXHOMEWORK){
-            String theme1 = themeTextField.getText();
+            String theme1 = (String) themeComboBox.getSelectedItem();
             String exact1 = exactTextArea.getText();
 
-            if( !exact1.equals(exact) && !theme1.equals(theme) && theme1.length() >= 5 && exact1.length() >= 10){
+            if( !exact1.equals(exact) && !theme1.equals(theme) && theme1.length() >= 5 && exact1.length() >= 20){
                 Homework homework = new Homework(user.getUserid(), new ArrayList<>(), theme1, exact1, 0, 0);
                 getGuiManager().getDbManager().addHomework(homework);
                 user.setSearching(user.getSearching()+1);
+                getGuiManager().getDbManager().addStudent(user);
                 getGuiManager().switchToOverviewGUI();
+            } else {
+                exactTextArea.setText("Please add a longer description (atleast 20 characters)");
             }
         }
     }
