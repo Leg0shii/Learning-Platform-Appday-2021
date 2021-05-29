@@ -8,6 +8,8 @@ import java.awt.*;
 
 @Getter
 @Setter
+
+//Grundklasse die von allen GUIs extended wird
 public class GUI extends JPanel {
     private GUIManager guiManager;
 

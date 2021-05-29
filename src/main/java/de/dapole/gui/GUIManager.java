@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 @Getter
 @Setter
+
+
 public class GUIManager extends JFrame {
     private LoginSignupGUI loginSignupGUI;
     private PlatformChooserGUI platformChooserGUI;
@@ -33,9 +35,10 @@ public class GUIManager extends JFrame {
     private final UserManager userManager;
     private final HomeworkManager homeworkManager;
     private final ModuleInfo moduleInfo;
-    User thisUser;
-    int tutorlearn = 0;
+    User thisUser;//der aufrufende User
+    int tutorlearn = 0;//Variable fuer den Typ des Leaderboards, 0 => tutor, 1 => learning
 
+    //this is where the magic happens. Window manager der das Umschalten zwischen verschiedenen Punkten ermoeglicht.
     public GUIManager (DBManager dbManager, UserManager userManager, HomeworkManager homeworkManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");
         this.setSize(500,500);
@@ -66,6 +69,8 @@ public class GUIManager extends JFrame {
         this.setContentPane(loginSignupGUI);
         this.revalidate();
     }
+
+    //switchTo[Platzhalter]GUI wird in den GUIs zum Wechsel aufgerufen
 
     public void switchToPlatformChooserGUI(User user){
         platformChooserGUI = new PlatformChooserGUI(this, user);
