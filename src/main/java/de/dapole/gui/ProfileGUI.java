@@ -21,6 +21,8 @@ public class ProfileGUI extends GUI {
     private JPanel avatarPanel;
     private JPanel tutorLevelPanel;
     private JPanel learnLevelPanel;
+    private JLabel tutorlvlLabel;
+    private JLabel learninglvlLabel;
     private User user;
     private BufferedImage image;
 
@@ -38,6 +40,8 @@ public class ProfileGUI extends GUI {
         avatarPanel.setLayout(new GridLayout(1,1));
         this.firstnameLabel.setText(user.getPrename());
         this.surnameLabel.setText(user.getSurname());
+        //this.tutorlvlLabel.setText("lvl " + user.getLevelTutor());
+        //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
         this.backButton.setText("Zurück");
 
         int width = 100;
@@ -45,13 +49,13 @@ public class ProfileGUI extends GUI {
 
         this.tutorLevelPanel.setLayout(new GridLayout(1,1));
         this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / (25 * Math.pow(2, user.getLevelTutor() -1)) );
+        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / (25 * Math.pow(2, user.getLevelTutor() -1)), user.getLevelTutor() );
         this.tutorLevelPanel.add(d);
         this.tutorLevelPanel.repaint();
 
         this.learnLevelPanel.setLayout(new GridLayout(1,1));
         this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / (25 * Math.pow(2, user.getLevelLearning() -1)) );
+        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / (25 * Math.pow(2, user.getLevelLearning() -1)), user.getLevelLearning());
         this.learnLevelPanel.add(e);
         this.learnLevelPanel.repaint();
 
