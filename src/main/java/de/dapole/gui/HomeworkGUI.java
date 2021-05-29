@@ -25,6 +25,7 @@ public class HomeworkGUI extends GUI{
     private void setupGUI(){
         User user = getGuiManager().getThisUser();
         if(user.getSearching()<=0){
+            ownButton.setText("eigene Hilfegesuche");
             ownButton.setVisible(false);
         }
 
