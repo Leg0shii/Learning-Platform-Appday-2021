@@ -36,6 +36,7 @@ public class User {
     private String time;
     private int levelpublic;
 
+                                                //ist das nicht effektiv 2*x / 2 = x ???
     public int getCumulatedLevel(){
         return (levelLearning + levelLearning)/2;
     }

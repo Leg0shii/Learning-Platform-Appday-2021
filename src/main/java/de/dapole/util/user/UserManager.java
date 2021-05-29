@@ -52,9 +52,9 @@ public class UserManager {
         return false;
     }
 
-    public void updateEXP(int userid, int gainedEXP, int type) {
+    public void updateEXP(int userid, int gainedEXP, int tutorlearn) {
 
-        if(type == 0) { // tutor
+        if(tutorlearn == 0) { // tutor
             ResultSet resultSet = mySQL.query("SELECT exptutor, leveltutor FROM users WHERE userid = " + userid + ";");
             try {
                 if(resultSet.next()) {
@@ -70,7 +70,7 @@ public class UserManager {
                     }
                 }
             } catch (SQLException e) { e.printStackTrace(); }
-        } else if(type == 1) { // learning
+        } else if(tutorlearn == 1) { // learning
             ResultSet resultSet = mySQL.query("SELECT explearning, levellearning FROM users WHERE userid = " + userid + ";");
             try {
                 if(resultSet.next()) {
@@ -86,9 +86,7 @@ public class UserManager {
                     }
                 }
             } catch (SQLException e) { e.printStackTrace(); }
-
         }
-
     }
 
     public int getIDFromEmail(String email) {
