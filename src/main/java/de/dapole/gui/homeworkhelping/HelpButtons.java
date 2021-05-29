@@ -1,5 +1,6 @@
-package de.dapole.gui;
+package de.dapole.gui.homeworkhelping;
 
+import de.dapole.gui.GUIManager;
 import de.dapole.util.homework.Homework;
 import lombok.Getter;
 import lombok.Setter;

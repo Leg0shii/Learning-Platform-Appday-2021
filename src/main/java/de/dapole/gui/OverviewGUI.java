@@ -1,14 +1,10 @@
 package de.dapole.gui;
 
+import de.dapole.gui.homework.HomeworkGUI;
 import de.dapole.util.user.User;
-import lombok.Getter;
 
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 public class OverviewGUI extends GUI{
     private JButton profileButton;

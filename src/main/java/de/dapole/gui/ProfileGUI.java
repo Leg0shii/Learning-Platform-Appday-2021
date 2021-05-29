@@ -1,15 +1,12 @@
 package de.dapole.gui;
 
+import de.dapole.gui.util.Drawable;
 import de.dapole.util.Leveling;
 import de.dapole.util.user.User;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.Objects;
 
 public class ProfileGUI extends GUI {

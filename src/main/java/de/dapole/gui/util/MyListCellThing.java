@@ -1,4 +1,4 @@
-package de.dapole.gui;
+package de.dapole.gui.util;
 
 import javax.swing.*;
 import java.awt.*;

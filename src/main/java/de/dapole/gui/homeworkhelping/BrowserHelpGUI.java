@@ -1,17 +1,18 @@
-package de.dapole.gui;
+package de.dapole.gui.homeworkhelping;
 
-import de.dapole.util.homework.Homework;
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
+import de.dapole.gui.util.SpringUtilities;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
-import javax.swing.plaf.basic.DefaultMenuLayout;
 import java.awt.*;
 import java.util.ArrayList;
 
 @Getter
 @Setter
-public class BrowserHelpGUI extends GUI{
+public class BrowserHelpGUI extends GUI {
     private JTabbedPane tabPanel;
     private JPanel mainPanel;
     private JPanel filterPanel;

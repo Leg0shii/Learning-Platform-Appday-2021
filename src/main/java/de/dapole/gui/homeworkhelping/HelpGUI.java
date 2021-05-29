@@ -1,11 +1,13 @@
-package de.dapole.gui;
+package de.dapole.gui.homeworkhelping;
 
+import de.dapole.gui.GUI;
+import de.dapole.gui.GUIManager;
 import de.dapole.util.homework.Homework;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class HelpGUI extends GUI{
+public class HelpGUI extends GUI {
     private JPanel mainPanel;
     private JButton confirmButton;
     private JButton cancelButton;

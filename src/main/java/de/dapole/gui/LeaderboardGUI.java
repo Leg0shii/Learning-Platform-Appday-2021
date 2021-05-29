@@ -1,10 +1,10 @@
 package de.dapole.gui;
 
+import de.dapole.gui.util.MyListCellThing;
 import de.dapole.util.user.User;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class LeaderboardGUI extends GUI{
     private JPanel mainPanel;
