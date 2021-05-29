@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class TrustScore {
 
+    //Trustscore wird durch richtig parsende Angaben erhoeht
+
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
         Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+[.][a-zA-Z]{2,6}$");
 
