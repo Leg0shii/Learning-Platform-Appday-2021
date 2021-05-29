@@ -11,30 +11,41 @@ public class LeaderboardGUI extends GUI{
     private JLabel leaderboardLabel;
     private JButton backButton;
     private JScrollPane leaderboardScrollPane;
+    private JButton switchButton;
     User user;
+    int tutorlearn;
 
-    public LeaderboardGUI(GUIManager guiManager) {
+    public LeaderboardGUI(GUIManager guiManager, int tutorlearn) {
         super(guiManager);this.setLayout(new GridLayout(1, 1));
         add(mainPanel);
-
+        this.tutorlearn = tutorlearn;
         setupGUI();
         setupListeners();
     }
 
     private void setupListeners() {
+
         backButton.addActionListener(e -> backFunction());
+        switchButton.addActionListener(e -> switchFunction());
     }
 
-    private void backFunction() {
-        getGuiManager().switchToOverviewGUI();
-    }
+    private void switchFunction() { getGuiManager().switchToLeaderboardGUI(1-tutorlearn); }
+
+    private void backFunction() { getGuiManager().switchToOverviewGUI();  }
 
     private void setupGUI() {
-        this.backButton.setText("Home");
-        this.leaderboardLabel.setText("Tutor Leaderboard");
-        //Tutor level == 0 // learning level == 1
-        User[] leaderboard = getGuiManager().getDbManager().getTop10(0);
 
+        this.backButton.setText("Home");
+        String tutorlearnString;
+        if(tutorlearn == 0){
+            tutorlearnString = "[  Tutor   ]";
+        }else{
+            tutorlearnString = "[ Learning ]";
+        }
+        this.switchButton.setText(tutorlearnString);
+        this.leaderboardLabel.setText("Leaderboard");
+        //Tutor level == 0 // learning level == 1
+        User[] leaderboard = getGuiManager().getDbManager().getTop10(tutorlearn);
 
         String s;
         //ArrayList<String> list1 = new ArrayList<>();
@@ -49,14 +60,6 @@ public class LeaderboardGUI extends GUI{
            list1[i++] = s;
         }
         JList<String> list2 = new JList<>(list1);
-
         leaderboardScrollPane.setViewportView(list2);
-
-
-        this.user = getGuiManager().getThisUser();
-        int userid = user.getUserid();
-
-
-
     }
 }

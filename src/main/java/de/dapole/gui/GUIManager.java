@@ -33,6 +33,7 @@ public class GUIManager extends JFrame {
     private final HomeworkManager homeworkManager;
     private final ModuleInfo moduleInfo;
     User thisUser;
+    int tutorlearn = 0;
 
     public GUIManager (DBManager dbManager, UserManager userManager, HomeworkManager homeworkManager, ModuleInfo moduleInfo){
         super("DaPoLe Appday 2021");
@@ -123,8 +124,8 @@ public class GUIManager extends JFrame {
         this.revalidate();
     }
 
-    public void switchToLeaderboardGUI() {
-        leaderboardGUI = new LeaderboardGUI(this);
+    public void switchToLeaderboardGUI(int tutorlearn) {
+        leaderboardGUI = new LeaderboardGUI(this, tutorlearn);
         this.setContentPane(leaderboardGUI);
         this.revalidate();
     }
