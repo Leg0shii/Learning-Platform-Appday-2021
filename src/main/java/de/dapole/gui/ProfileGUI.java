@@ -43,27 +43,13 @@ public class ProfileGUI extends GUI {
         //this.learninglvlLabel.setText("lvl " + user.getLevelLearning());
         this.backButton.setText("Zurück");
 
-        int width = 100;
-        int height = 220;
 
-        this.tutorLevelPanel.setLayout(new GridLayout(1,1));
-        this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / Leveling.calcNextLevelEXP(user.getLevelTutor()), user.getLevelTutor() );
-        this.tutorLevelPanel.add(d);
-        this.tutorLevelPanel.repaint();
-
-        this.learnLevelPanel.setLayout(new GridLayout(1,1));
-        this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable e = new Drawable(17, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
-        this.learnLevelPanel.add(e);
-        this.learnLevelPanel.repaint();
-
-
-        updateAvatar();
+        updateGUI();
     }
 
     public void updateGUI(){
         updateAvatar();
+        updateEXP();
     }
 
     private void updateAvatar(){
@@ -113,7 +99,22 @@ public class ProfileGUI extends GUI {
     }
 
     private void updateEXP(){
+        System.out.println(user.getExpLearning());
 
+        int width = 100;
+        int height = 220;
+
+        this.tutorLevelPanel.setLayout(new GridLayout(1,1));
+        this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
+        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / Leveling.calcNextLevelEXP(user.getLevelTutor()), user.getLevelTutor() );
+        this.tutorLevelPanel.add(d);
+        this.tutorLevelPanel.repaint();
+
+        this.learnLevelPanel.setLayout(new GridLayout(1,1));
+        this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
+        Drawable e = new Drawable(17, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
+        this.learnLevelPanel.add(e);
+        this.learnLevelPanel.repaint();
     }
 
     private void setupListeners() {
