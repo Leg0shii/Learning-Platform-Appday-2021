@@ -7,10 +7,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class OwnHomeWorkGUI extends GUI{
+public class OwnHomeWorkGUI extends GUI {
     private JButton backButton;
-    private JPanel ownHomeWorksPanel;
     private JPanel mainPanel;
+    private JMenuBar homeworkBar;
+    private JLabel headerLabel;
     User user;
 
     public OwnHomeWorkGUI(GUIManager guiManager) {
@@ -31,18 +32,26 @@ public class OwnHomeWorkGUI extends GUI{
     }
 
     private void setupGUI() {
-        this.backButton.setText("Home");
+        this.backButton.setText("Zurück");
+        this.headerLabel.setFont(getFont().deriveFont(Font.BOLD, 20));
+        this.headerLabel.setText("Meine Gesuche");
+
+        homeworkBar.setLayout(new GridLayout(-1, 1));
+
+        updateGUI();
+    }
+
+    public void updateGUI(){
         this.user = getGuiManager().getThisUser();
         int userid = user.getUserid();
         ArrayList<Homework> hwl = getGuiManager().getHomeworkManager().getAllMyHomeworks(userid);
-
-
-        for( Homework hw : hwl){
-           // ownHomeWorksPanel.add(new HomeworkPanel(hw));
+        for (Homework hw : hwl) {
+            if (hw.getDone() == 0) {
+                JMenu menu = new JMenu("<html>Gesuch zu Bereich: " + hw.getModule() + "<br>Genau: " + hw.getTitle().substring(0, 15) + "...</html>");
+                menu.add(new HelperGUI(getGuiManager(), hw));
+                homeworkBar.add(new JSeparator());
+                homeworkBar.add(menu);
+            }
         }
-
-
-
-
     }
 }

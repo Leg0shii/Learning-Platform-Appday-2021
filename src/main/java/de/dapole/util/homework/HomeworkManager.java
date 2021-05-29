@@ -46,6 +46,7 @@ public class HomeworkManager {
         try {
             if (resultSet.next()) {
 
+                homework.setHwid(Integer.parseInt(resultSet.getString("hwid")));
                 homework.setModule(resultSet.getString("modulename"));
                 homework.setTitle(resultSet.getString("title"));
                 homework.setType(resultSet.getInt("type"));

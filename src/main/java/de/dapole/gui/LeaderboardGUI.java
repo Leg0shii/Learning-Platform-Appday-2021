@@ -64,6 +64,7 @@ public class LeaderboardGUI extends GUI{
            list1[i++] = s;
         }
         JList<String> list2 = new JList<>(list1);
+        list2.setCellRenderer(new MyListCellThing());
         leaderboardScrollPane.setViewportView(list2);
     }
 }

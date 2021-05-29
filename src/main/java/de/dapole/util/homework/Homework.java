@@ -13,6 +13,7 @@ import java.util.ArrayList;
 @AllArgsConstructor
 public class Homework {
 
+    private int hwid;
     private int userid;
     private ArrayList<Integer> helperids;
     private String module;

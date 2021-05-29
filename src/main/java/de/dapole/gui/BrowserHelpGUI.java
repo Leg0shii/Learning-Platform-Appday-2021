@@ -54,13 +54,12 @@ public class BrowserHelpGUI extends GUI{
     }
 
     private void updateHelpButtons() {
-        //helpPanel.getViewport().removeAll();
+        helpPanel.getViewport().removeAll();
         JPanel panel = new JPanel();
         HelpButtons buttons = new HelpButtons(getGuiManager(), filterList);
         panel.add(buttons);
         helpPanel.setViewportView(panel);
         helpPanel.revalidate();
-        //view.add(panel);
     }
 
     private void updateGUI(){
