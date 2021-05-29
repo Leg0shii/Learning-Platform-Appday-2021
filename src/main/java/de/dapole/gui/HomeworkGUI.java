@@ -28,7 +28,6 @@ public class HomeworkGUI extends GUI{
             ownButton.setText("eigene Hilfegesuche");
             ownButton.setVisible(false);
         }
-
         sendHelpButton.setText("Jemandem helfen");
         getHelpButton.setText("Hilfe bekommen");
     }
