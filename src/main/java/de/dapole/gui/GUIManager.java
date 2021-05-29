@@ -129,4 +129,8 @@ public class GUIManager extends JFrame {
         this.setContentPane(leaderboardGUI);
         this.revalidate();
     }
+
+    public void switchToBrowseHelpGUI() {
+
+    }
 }
