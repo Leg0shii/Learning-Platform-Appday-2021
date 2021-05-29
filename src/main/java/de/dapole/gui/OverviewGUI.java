@@ -48,6 +48,8 @@ public class OverviewGUI extends GUI{
     private void profileFunction() { getGuiManager().switchToProfileGUI();   }
 
     private void setupGUI() {
+        this.profileButton.putClientProperty("JButton.buttonType", "square");
+        this.leaderboardButton.putClientProperty("JButton.buttonType", "square");
         this.homeworkButton.setLayout(new GridLayout(1,1));
         this.uebersichtLabel.setFont(getFont().deriveFont(Font.BOLD,20));
         user = getGuiManager().getThisUser();
@@ -66,7 +68,7 @@ public class OverviewGUI extends GUI{
         this.expSlider.setMinimum(10);
         this.expSlider.setMaximum(120);
         this.expSlider.setValue(60);
-        expSlider.addChangeListener(e -> expButton.setText("Adde " + ((JSlider)e.getSource()).getValue() + " Minuten zu deiner Learnminuten Balance"));
+        expSlider.addChangeListener(e -> expButton.setText("<html>Adde " + ((JSlider)e.getSource()).getValue() + " Minuten <br>zu deiner Learnminuten Balance</html>"));
         this.expButton.setText("Adde " + expSlider.getValue() + " Minuten zu deiner Learnminuten Balance");
 
     }
