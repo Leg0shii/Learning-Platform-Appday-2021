@@ -30,6 +30,7 @@ public class Application {
 
         application = this;
 
+        //look and feel options
         FlatArcOrangeIJTheme.setup();
         UIManager.put( "Button.arc", 999 );
         UIManager.put( "Component.arc", 999 );
@@ -42,15 +43,18 @@ public class Application {
         UIManager.put("MenuBar.background", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter().brighter());
         UIManager.put("MenuBar.hoverBackground", UIManager.getLookAndFeelDefaults().getColor("Button.hoverBorderColor").brighter());
 
+        //datenbanksetup
         dbManager = new DBManager();
         mySQL = dbManager.initTables();
 
+        //andere Helferklassen
         userManager = new UserManager(mySQL);
         homeworkManager = new HomeworkManager(mySQL);
         groupManager = new GroupManager(mySQL);
         moduleInfo = new ModuleInfo(mySQL);
         dbManager.setUsermg(userManager);
 
+        //der Boss
         new GUIManager(dbManager, userManager, homeworkManager, moduleInfo);
     }
 
