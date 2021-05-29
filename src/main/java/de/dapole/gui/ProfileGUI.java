@@ -46,7 +46,8 @@ public class ProfileGUI extends GUI {
         this.tutorLabel.setText("Tutor");
         this.learningLabel.setText("Learning");
         this.backButton.setText("Home");
-
+        this.tutorLabel.setFont(getFont().deriveFont(Font.BOLD, 15));
+        this.learningLabel.setFont(getFont().deriveFont(Font.BOLD, 15));
 
         updateGUI();
     }

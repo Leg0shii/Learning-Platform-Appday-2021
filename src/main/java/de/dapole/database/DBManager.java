@@ -127,7 +127,7 @@ public class DBManager {
         try {
             if (resultSet.next()) {
                 update = resultSet.getString("helperids") + helperid + ";";
-                mySQL.update("UPDATE hwrequest SET helperids = '" + update + "';");
+                mySQL.update("UPDATE hwrequest SET helperids = '" + update + "' WHERE hwid = " + hwid + ";");
             }
         } catch (SQLException e) {
             e.printStackTrace();

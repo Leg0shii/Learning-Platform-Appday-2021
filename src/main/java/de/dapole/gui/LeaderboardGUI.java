@@ -51,67 +51,69 @@ public class LeaderboardGUI extends GUI {
             this.headerLabel.setText("Learning Leaderboard");
         }
 
-        //Tutor level == 0 // learning level == 1
-        User[] leaderboard = getGuiManager().getDbManager().getTop10(tutorlearn);
+        new Thread(() -> {
+            //Tutor level == 0 // learning level == 1
+            User[] leaderboard = getGuiManager().getDbManager().getTop10(tutorlearn);
 
-        String s;
-        //ArrayList<String> list1 = new ArrayList<>();
-        String[] list1 = new String[11];
-        list1[0] = "NAME  ";
-        int i = 1;
-        for (User u : leaderboard) {
-            try {
-                s = u.getPrename() + " " + u.getSurname();
-                if (u.getTrustworthy() >= 6) {
-                    s += " \u2713";
+            String s;
+            //ArrayList<String> list1 = new ArrayList<>();
+            String[] list1 = new String[11];
+            list1[0] = "NAME  ";
+            int i = 1;
+            for (User u : leaderboard) {
+                try {
+                    s = u.getPrename() + " " + u.getSurname();
+                    if (u.getTrustworthy() >= 6) {
+                        s += " \u2713";
+                    }
+                    s += "  ";
+                } catch (Exception e) {
+                    s = "irgendwas du loster boy";
+                    e.printStackTrace();
                 }
-                s += "  ";
-            } catch (Exception e) {
-                s = "irgendwas du loster boy";
-                e.printStackTrace();
+                list1[i++] = s;
             }
-            list1[i++] = s;
-        }
-        i = 1;
-        String[] list2 = new String[11];
-        list2[0] = "  LEVEL";
-        for (User u : leaderboard) {
-            try {
-                if (tutorlearn == 0) {
-                    s = "  " + String.valueOf(u.getLevelTutor());
-                } else {
-                    s = "  " + String.valueOf(u.getLevelLearning());
+            i = 1;
+            String[] list2 = new String[11];
+            list2[0] = "  LEVEL";
+            for (User u : leaderboard) {
+                try {
+                    if (tutorlearn == 0) {
+                        s = "  " + String.valueOf(u.getLevelTutor());
+                    } else {
+                        s = "  " + String.valueOf(u.getLevelLearning());
+                    }
+                } catch (Exception e) {
+                    s = "irgendwas du loster boy";
                 }
-            } catch (Exception e) {
-                s = "irgendwas du loster boy";
+                list2[i++] = s;
             }
-            list2[i++] = s;
-        }
-        i = 1;
-        String[] list3 = new String[11];
-        list3[0] = "RANG";
-        for (User u : leaderboard) {
-            try {
-                s = String.valueOf(i);
-            } catch (Exception e) {
-                s = "irgendwas du loster boy";
+            i = 1;
+            String[] list3 = new String[11];
+            list3[0] = "RANG";
+            for (User u : leaderboard) {
+                try {
+                    s = String.valueOf(i);
+                } catch (Exception e) {
+                    s = "irgendwas du loster boy";
+                }
+                list3[i++] = s;
             }
-            list3[i++] = s;
-        }
-        JList<String> list11 = new JList<>(list1);
-        JList<String> list21 = new JList<>(list2);
-        JList<String> list31 = new JList<>(list3);
-        MyListCellThing renderer1 = new MyListCellThing();
-        renderer1.setHorizontalAlignment(SwingConstants.RIGHT);
-        MyListCellThing renderer2 = new MyListCellThing();
-        renderer2.setHorizontalAlignment(SwingConstants.LEFT);
-        MyListCellThing renderer3 = new MyListCellThing();
-        renderer3.setHorizontalAlignment(SwingConstants.CENTER);
-        list11.setCellRenderer(renderer1);
-        list21.setCellRenderer(renderer2);
-        list31.setCellRenderer(renderer3);
-        subPanel.add(list31);
-        subPanel.add(list11);
-        subPanel.add(list21);
+            JList<String> list11 = new JList<>(list1);
+            JList<String> list21 = new JList<>(list2);
+            JList<String> list31 = new JList<>(list3);
+            MyListCellThing renderer1 = new MyListCellThing();
+            renderer1.setHorizontalAlignment(SwingConstants.RIGHT);
+            MyListCellThing renderer2 = new MyListCellThing();
+            renderer2.setHorizontalAlignment(SwingConstants.LEFT);
+            MyListCellThing renderer3 = new MyListCellThing();
+            renderer3.setHorizontalAlignment(SwingConstants.CENTER);
+            list11.setCellRenderer(renderer1);
+            list21.setCellRenderer(renderer2);
+            list31.setCellRenderer(renderer3);
+            subPanel.add(list31);
+            subPanel.add(list11);
+            subPanel.add(list21);
+        }).start();
     }
 }
