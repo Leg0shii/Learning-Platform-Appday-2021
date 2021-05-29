@@ -28,7 +28,7 @@ public class Drawable extends JPanel {
         g2d.setColor(Color.BLACK);
         g2d.drawRect(x, y, width, height);
         g2d.setColor(Color.GREEN);
-        g2d.fillRect(x+1, y +height - (int) filled * 2, width-1, (int) filled * 2);
+        g2d.fillRect(x+1, y +height - (int) (filled * 200), width-1, (int) (filled * 200));
 
         //trying outline
         g2d.setPaint(Color.black);

@@ -120,6 +120,7 @@ public class GUIManager extends JFrame {
 
     public void switchToProfileGUI() {
         profileGUI = new ProfileGUI(this);
+        thisUser = getUserManager().retrieveUser(thisUser.getUserid());
         this.setContentPane(profileGUI);
         this.revalidate();
     }

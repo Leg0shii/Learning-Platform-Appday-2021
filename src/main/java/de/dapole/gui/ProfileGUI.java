@@ -1,5 +1,6 @@
 package de.dapole.gui;
 
+import de.dapole.util.Leveling;
 import de.dapole.util.user.User;
 
 import javax.imageio.ImageIO;
@@ -21,8 +22,6 @@ public class ProfileGUI extends GUI {
     private JPanel avatarPanel;
     private JPanel tutorLevelPanel;
     private JPanel learnLevelPanel;
-    private JLabel tutorlvlLabel;
-    private JLabel learninglvlLabel;
     private User user;
     private BufferedImage image;
 
@@ -49,13 +48,13 @@ public class ProfileGUI extends GUI {
 
         this.tutorLevelPanel.setLayout(new GridLayout(1,1));
         this.tutorLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / (25 * Math.pow(2, user.getLevelTutor() -1)), user.getLevelTutor() );
+        Drawable d = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpTutor() / Leveling.calcNextLevelEXP(user.getLevelTutor()), user.getLevelTutor() );
         this.tutorLevelPanel.add(d);
         this.tutorLevelPanel.repaint();
 
         this.learnLevelPanel.setLayout(new GridLayout(1,1));
         this.learnLevelPanel.setPreferredSize(new Dimension(width, height));
-        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / (25 * Math.pow(2, user.getLevelLearning() -1)), user.getLevelLearning());
+        Drawable e = new Drawable(0, 0, width - 2* 10,height - 2*10, user.getExpLearning() / Leveling.calcNextLevelEXP(user.getLevelLearning()), user.getLevelLearning());
         this.learnLevelPanel.add(e);
         this.learnLevelPanel.repaint();
 
@@ -70,23 +69,43 @@ public class ProfileGUI extends GUI {
     private void updateAvatar(){
         avatarPanel.removeAll();
         switch (user.getCumulatedLevel()) {
-            case 0, 1 -> {
+            case 0 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
-            case 2, 3 -> {
+            case 1 -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0_5.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            case 2 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar1.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
-            case 4,5 -> {
+            case 3 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar2.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
-            default -> {
+            case 4 -> {
                 ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar3.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            case 5 -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar4.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            case 6 -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar5.png")));
+                JLabel label = new JLabel(icon);
+                avatarPanel.add(label);
+            }
+            default -> {
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar6.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
@@ -96,8 +115,6 @@ public class ProfileGUI extends GUI {
     private void updateEXP(){
 
     }
-
-
 
     private void setupListeners() {
         backButton.addActionListener(e -> homefunction());
