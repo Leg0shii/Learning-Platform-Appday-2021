@@ -12,6 +12,7 @@ public class HomeworkManager {
 
     private final AsyncMySQL mySQL;
 
+    //alle Homeworks aus der Datenbank holen
     public ArrayList<Homework> getAllHomeworks() {
 
         ArrayList<Homework> homeworkList = new ArrayList<>();
@@ -23,6 +24,7 @@ public class HomeworkManager {
         return homeworkList;
     }
 
+    //alle eigenen Hilfeanfragen aus der Datenbank bekommen
     public ArrayList<Homework> getAllMyHomeworks(int userid) {
 
         ArrayList<Homework> homeworkList = new ArrayList<>();
@@ -34,6 +36,7 @@ public class HomeworkManager {
         return homeworkList;
     }
 
+    //bestimmte Hilfeanfrage aus Datenbank holen
     public Homework retrieveHomework(int hwid) {
 
         ResultSet resultSet = mySQL.query("SELECT * FROM hwrequest where hwid = " + hwid + ";");
@@ -54,6 +57,7 @@ public class HomeworkManager {
         return homework;
     }
 
+    //hilfsbereite Studierende extrahieren
     public ArrayList<Integer> getHelperIds(String helpers) {
 
         if(!helpers.equals("")) {
