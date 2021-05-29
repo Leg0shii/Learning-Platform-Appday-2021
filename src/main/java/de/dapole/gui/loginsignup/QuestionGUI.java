@@ -70,7 +70,7 @@ public class QuestionGUI extends GUI {
             getGuiManager().getDbManager().addStudent(user);
 
             user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
-            Application.getApplication().user = user;
+            getGuiManager().setThisUser(user);
 
             getGuiManager().switchToNoticeGUI();
         }
@@ -87,7 +87,7 @@ public class QuestionGUI extends GUI {
             getGuiManager().getDbManager().addStudent(user);
 
             user.setUserid(getGuiManager().getUserManager().getIDFromEmail(user.getEmail()));
-            Application.getApplication().user = user;
+            getGuiManager().setThisUser(user);
 
             getGuiManager().switchToNoticeGUI();
         }

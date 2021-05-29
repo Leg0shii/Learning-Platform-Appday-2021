@@ -42,7 +42,7 @@ public class User {
     }
 
     public boolean isTrustworthy() {
-        return trustworthy >= 6;
+        return trustworthy >= 5;
     }
 
 }

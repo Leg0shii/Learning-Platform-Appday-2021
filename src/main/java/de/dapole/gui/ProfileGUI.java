@@ -61,42 +61,42 @@ public class ProfileGUI extends GUI {
         avatarPanel.removeAll();
         switch (user.getCumulatedLevel()) {
             case 0 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar0.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 1 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar0_5.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar0_5.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 2 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar1.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar1.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 3 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar2.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar2.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 4 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar3.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar3.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 5 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar4.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar4.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             case 6 -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar5.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar5.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }
             default -> {
-                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("../../../avatar6.png")));
+                ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/avatar6.png")));
                 JLabel label = new JLabel(icon);
                 avatarPanel.add(label);
             }

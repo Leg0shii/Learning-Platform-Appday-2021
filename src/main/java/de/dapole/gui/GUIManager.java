@@ -14,7 +14,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.swing.*;
+import java.io.File;
 import java.net.URL;
+import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
 
 @Getter
@@ -53,7 +55,7 @@ public class GUIManager extends JFrame {
         this.homeworkManager = homeworkManager;
         this.moduleInfo = moduleInfo;
 
-        URL iconURL = getClass().getResource("../../../DaPole.png");
+        URL iconURL = getClass().getResource("/DaPole.png");
         assert iconURL != null;
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
