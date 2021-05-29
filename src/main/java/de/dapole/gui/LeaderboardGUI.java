@@ -45,25 +45,33 @@ public class LeaderboardGUI extends GUI{
         this.switchButton.setText(tutorlearnString);
         this.leaderboardLabel.setText("Leaderboard");
         //Tutor level == 0 // learning level == 1
-        User[] leaderboard = getGuiManager().getDbManager().getTop10(tutorlearn);
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
 
-        String s;
-        //ArrayList<String> list1 = new ArrayList<>();
-        String[] list1 = new String[10];
-        int i = 0;
-        for(User u : leaderboard){
-            try {
-                if(tutorlearn == 0){
-                    s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelTutor();
-                }else{
-                    s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelLearning();
+                User[] leaderboard = getGuiManager().getDbManager().getTop10(tutorlearn);
+
+                String s;
+                //ArrayList<String> list1 = new ArrayList<>();
+                String[] list1 = new String[10];
+                int i = 0;
+                for(User u : leaderboard){
+                    try {
+                        if(tutorlearn == 0){
+                            s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelTutor();
+                        }else{
+                            s =  u.getPrename() + " " + u.getSurname() + " " + u.getLevelLearning();
+                        }
+                    }catch(Exception e){
+                        s = "irgendwas du loster boy";
+                    }
+                    list1[i++] = s;
                 }
-            }catch(Exception e){
-                s = "irgendwas du loster boy";
+                JList<String> list2 = new JList<>(list1);
+                leaderboardScrollPane.setViewportView(list2);
             }
-           list1[i++] = s;
-        }
-        JList<String> list2 = new JList<>(list1);
-        leaderboardScrollPane.setViewportView(list2);
+        });
+        t.start();
+        leaderboardScrollPane.setViewportView(new JList<>());
     }
 }

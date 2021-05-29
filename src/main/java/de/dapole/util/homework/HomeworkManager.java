@@ -56,10 +56,13 @@ public class HomeworkManager {
 
     public ArrayList<Integer> getHelperIds(String helpers) {
 
-        String[] hs = helpers.split(";");
-        ArrayList<Integer> arrayList = new ArrayList<>();
-        for(String h : hs) arrayList.add(Integer.parseInt(h));
-        return arrayList;
+        if(!helpers.equals("")) {
+            String[] hs = helpers.split(";");
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            for (String h : hs) arrayList.add(Integer.parseInt(h));
+            return arrayList;
+        }
+        return new ArrayList<>();
     }
 
 }

@@ -41,4 +41,8 @@ public class User {
         return (levelLearning + levelLearning)/2;
     }
 
+    public boolean isTrustworthy() {
+        return trustworthy >= 6;
+    }
+
 }
